@@ -13,4 +13,6 @@ while abs(f1-f0)>tol
    x1=c;            
 end
 toc
+it
 end
+
