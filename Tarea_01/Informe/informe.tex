@@ -178,57 +178,80 @@ de las siguientes ecuaciones no lineales en los intervalos indicados:
     
     \end{enumerate}
 \newpage
-%pendiente: poner gráfica
 \item Considere la ecuación no lineal $f(x)= \frac{1}{2}+\frac{1}{4}x^2-xsen(x)-\frac{1}{2}cos(2x)=0$
     	\begin{enumerate}
-    	\item  Usando el método de Newton con punto inicial $x_{0}=\frac{\pi}{2}$ encuentre la solución aproximada de $f$. Para ello Realize las iteraciones necesarias hasta que se cumpla el criterio de parada %$\abs{x_{n+1}-x_{n}} \l 10^{-6} $
-    
-        
-        		\begin{table} [H]
+    	\item  Usando el método de Newton con punto inicial $x_{0}=\frac{\pi}{2}$ encuentre la solución aproximada de $f$. Para ello realize las iteraciones necesarias hasta que se cumpla el criterio de parada $ |x_{n+1} - x_{n} < 10^{-6} $
+    	\begin{figure}[H]
+        \centering
+        \includegraphics[width=10cm]{ec5.png}
+        \caption{Gráfico Ej 1D}
+        \end{figure}
+        	\begin{table} [H]
         			\centering
         			\begin{tabular}{|c|c|c|}
         				\hline
         				$x_{0}$ & Cero Obtenido & Iteraciones\\
         				\hline
-        				$\frac{\pi}{2} $ & 1,8955 & 18\\
+        				$\frac{\pi}{2} $ &  2.7904*10^(-6) & 56\\
         				\hline 
         			\end{tabular}
         		\end{table}
         	
-        	\item Repita el proceso tomando como valores iniciales $x_{0}=5\pi$ y $x_{0}=10\pi$ ¿La sucesión construída con estos puntos iniciales converge?
-        	 	\begin{table} [H]
+        	\item Repetir el proceso con el método de Newton modificado, esto es, con la iteración $$x_{n+1} = x_{n} - \frac {f(x_{n})} {f'(x_{0})} $$
+        	¿Que método converge mas rápido ?
+        \begin{table} [H]
         			\centering
         			\begin{tabular}{|c|c|c|}
         				\hline
         				$x_{0}$ & Cero Obtenido & Iteraciones\\
         				\hline
-        				$5\pi$ & 1,8955 & 22 \\
+        				$\frac{\pi}{2} $ &  0.0025 & 2512\\
         				\hline 
-        				$10\pi$ & 0 & 66\\
+        			\end{tabular}
+        		\end{table}
+        \item Repita el proceso tomando como valores iniciales $x_{0}=5\pi$ y $x_{0}=10\pi$ ¿La sucesión construida con estos puntos iniciales converge?
+        	 	\begin{table} [H]Newton 
+        			\centering
+        			\begin{tabular}{|c|c|c|}
+        				\hline
+        				$x_{0}$ & Cero Obtenido & Iteraciones\\
+        				\hline
+        				$5\pi$ & 1.8972 & 1665 \\
+        				\hline 
+        				$10\pi$ & 1.8972 & 1669\\
         				\hline
         			\end{tabular}
         		\end{table}
         		
-        La sucesión, en el caso de $x_{0}=5\pi$, converge al mismo cero que en el ejercicio anterior. Por otra parte, cuando $x_{0}=10\pi$, esta converge a 0.
-        
-        	\item Use el método de la secante para encontrar la solución aproximada tomando como puntos iniciales $x_{0}=\frac{\pi}{2}$ y $x_{0}=5\pi$, como criterio de parada el mismo descrito en (a).
-        	\begin{table} [H]
+        		\begin{table} [H]Newton Modificado
+        			\centering
+        			\begin{tabular}{|c|c|c|}
+        				\hline
+        				$x_{0}$ & Cero Obtenido & Iteraciones\\
+        				\hline
+        				$5\pi$ & 1.9003 & 4713 \\
+        				\hline 
+        				$10\pi$ & 1.9023 & 6620\\
+        				\hline
+        			\end{tabular}
+        		\end{table}
+        		
+        \item Use el método de la secante para encontrar la solución aproximada tomando como puntos iniciales $x_{0}=5\pi$ y $x_{0}=10\pi$, como criterio de parada el mismo descrito en (a).
+        	\begin{table} [H] 
         			\centering
         			\begin{tabular}{|c|c|c|c|}
         				\hline
         				$x_{0}$& $x_{1}$ & Cero Obtenido & Iteraciones\\
         				\hline
-        				$\frac{\pi}{2}$ & 1,7854 & 1,8955 & 24 \\
+        				$\frac{\pi}{2}$ & 1.5415 & 1.8947 & 11 \\
         				\hline 
-        				$5\pi$& 13,0900 & 0 & 31\\
+        				$5\pi$& 11.7810 & 1.8961     &16\\
         				\hline
         			\end{tabular}
         		\end{table}
         		
-        Se puede apreciar que si $x_{0}=5\pi$, al ocupar el método de la secante se obtiene un cero distinto a cuando se ocupa el método de Newton.	
+        		
         
-        
-        Para este ejercicio, se ocuparon los archivos newton.m y secante.m.
        
         
     \end{enumerate}
@@ -251,19 +274,7 @@ de las siguientes ecuaciones no lineales en los intervalos indicados:
         \end{tabular}
         \end{table}
         
-        \item Repetir el proceso con el método de Newton modificado, esto es, con la iteración $$x_{n+1} = x_{n} - \frac {f(x_{n})} {f'(x_{0})} $$
-        \begin{table}[H]
-        \centering
-        \begin{tabular} { |c|c|}
         
-        \hline
-        Cero Obtenido &  -0.8655\\
-        \hline
-        Iteraciones   &    7\\
-        \hline
-        
-        \end{tabular}
-        \end{table}
         ¿Qué método converge más rápido?
         El método de Newton usual converge más rápido, ya que este sólo tomó 4 iteraciones. %debo graficar y argumentar.
     \end{enumerate}
