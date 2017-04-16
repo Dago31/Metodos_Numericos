@@ -1,7 +1,7 @@
 \documentclass{udpreport}
 %\headertext{Metodos Numéricos}
 \title{Metodos Numéricos : Tarea 1}
-\author{.}
+\author{Andrés Comte, Benjamín Morales, Dagoberto Navarrete.}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -51,7 +51,7 @@ de las siguientes ecuaciones no lineales en los intervalos indicados:
     \begin{itemize}
         \item Biseccion.m
         \item Secante.m
-        \item FalsaPosicion.m
+        \item Falsa.m
     \end{itemize}
     y las comparaciones de error se hicieron en base a el resultado de la función fzero de matlab
     
@@ -257,29 +257,6 @@ de las siguientes ecuaciones no lineales en los intervalos indicados:
     \end{enumerate}
 		
 
-\item Considere la ecuación no lineal $f(x) = -x^{3} - \cos(x) = 0$
-    \begin{enumerate}
-    
-        \item Usando el método de Newton encontrar la raíz próxima al valor $x_{0}=-1$, con una precisión de $10^{-5}$.\\
-        \begin{table}[H]
-        \centering
-        \begin{tabular} { |c|c|}
-        
-        \hline
-        Cero Obtenido &  -0.8655\\
-        \hline
-        Iteraciones   &    4\\
-        \hline
-        
-        \end{tabular}
-        \end{table}
-        
-        
-        ¿Qué método converge más rápido?
-        El método de Newton usual converge más rápido, ya que este sólo tomó 4 iteraciones. %debo graficar y argumentar.
-    \end{enumerate}
-
-\newpage
 \item El dinero necesario para pagar la cuota correspondiente a un crédito hipotecario a interés fijo se suele
 estimar mediante la denominada “ecuación de la anualidad ordinaria”:
 \begin{center}
@@ -289,11 +266,11 @@ donde Q es la cantidad pedida en préstamo, A es la cuota que debe pagar el bene
 préstamo, i es la tasa de interés fijado por la entidad bancaria que concede el préstamo y n es el
 número de periodos durante los cuales se realizan pagos de la cuota.
 Una pareja que desea comenzar una vida en común se plantea adquirir una vivienda y para ello saben
-que necesitan pedir un préstamo de 15000 dólares a pagar semestralmente durante un plazo de 10 años.
-Sabiendo que para atender este pago pueden destinar una cantidad máxima de 200 dólares mensuales,
-calcule cual es el tipo máximo de interés al que pueden negociar su préstamo con las entidades bancarias.
+que necesitan pedir un préstamo de 16000 dólares a pagar semestralmente durante un plazo de 10 años.
+Sabiendo que para atender este pago pueden destinar una cantidad máxima de 400 dólares mensuales,
+calcule cual es el tipo máximo de interés al que pueden negociar su préstamo con las entidades bancarias.¿Con dicho interés alguna de las entidades bancarias le concederá el préstamo solicitado?.
 Hint.- Usar método de Newton, tomando como punto inicial i0 = 0.03.
-Suponga ahora que desean endeudarse en 15 años en lugar de 10. Cual sería el interés en esta situación?
+Suponga ahora que desean endeudarse en 16 años en lugar de 10. Cual sería el interés en esta situación?
 
 
 Resp: Al realizar el método de Newton aplicándolo a optimización, se obtiene un interes de 10.24\%.Si se Consideraba un error de 5\% el porcentaje de interes era excesivamente alto (orden del 40\%), es por ello que se realizarón iteraciones hasta observar que el valor no cambiaba, así se encontro el valor en el que converge a los 10 años del préstamo.
@@ -319,7 +296,7 @@ Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
 \begin{enumerate}
     
 \vspace{0.9cm}
-\item Considere las siguientes funciones. Realice unas 12 iteraciones de punto fijo, usando como puntos iniciales x0 = 0.5 y x0 = 0.5.\\ 
+\item Considere las siguientes funciones. Realice unas 12 iteraciones de punto fijo, usando como puntos iniciales x0 = -0.5 y x0 = 0.5.\\ 
 
 
 \begin{equation}
@@ -339,29 +316,29 @@ Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
         \hline
         iteración  &  Punto\\
         \hline
-        1 &  0,6118        \\
+        1 &  0.6118        \\
          \hline
-        2 &  0,8004        \\
+        2 &   0.8004       \\
          \hline
-        3 &  1,1947        \\
+        3 &   1.1947       \\
          \hline
-        4 &  2,5579        \\
+        4 &   2.5579      \\
          \hline
-        5 &  87,3616        \\
+        5 &  87.3616      \\
          \hline
-        6 & 4,7832e+37        \\
+        6 & 4.7832e+37     \\
          \hline
-        7 & inf           \\
+        7 &  Inf         \\
          \hline
-        8 &  NaN        \\
+        8 &  NaN       \\
          \hline
-        9 &  NaN        \\
+        9 & NaN      \\
          \hline
-        10 &  NaN        \\
+        10 &  0 NaN       \\
          \hline
         11 &  NaN        \\
          \hline
-        12 &  NaN        \\
+        12 &   NaN        \\
         \hline
         
         \end{tabular}
@@ -378,29 +355,29 @@ Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
         \hline
         iteración  &  Punto\\
         \hline
-        1 &  -0.4759        \\
+        1 & -0.4759        \\
          \hline
         2 &  -0.4524        \\
          \hline
-        3 &  -0.4298        \\
+        3 &  -0.4298       \\
          \hline
         4 &   -0.4081      \\
          \hline
-        5 &  -0.3875        \\
+        5 &  -0.3875       \\
          \hline
-        6 &  -0.3680       \\
+        6 &   -0.3680     \\
          \hline
-        7 &  -0.3497        \\
+        7 &  -0.3497      \\
          \hline
-        8 &  -0.3324        \\
+        8 &  -0.3324       \\
          \hline
-        9 &  -0.3163        \\
+        9 &  -0.3163       \\
          \hline
         10 &  -0.3012       \\
          \hline
-        11 &  -0.2871       \\
+        11 &  -0.2871     \\
          \hline
-        12 &  -0.2739        \\
+        12 &  -0.2871       \\
         \hline
         \end{tabular}
 \end{table}
@@ -598,23 +575,23 @@ Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
          \hline
         3 &   1.1230e-05 \\
          \hline
-        4 &   8.4146e-11    \\
+        4 &   8.4360e-11    \\
          \hline
-        5 &   8.4146e-11   \\
+        5 &    8.4360e-11  \\
          \hline
-        6 &   8.4146e-11     \\
+        6 &   8.4360e-11     \\
          \hline
-        7 & 8.4146e-11   \\
+        7 & 8.4360e-11    \\
          \hline
-        8 &  8.4146e-11   \\
+        8 &  8.4360e-11   \\
          \hline
-        9 &   8.4146e-11      \\
+        9 &   8.4360e-11      \\
          \hline
-        10 &   8.4146e-11      \\
+        10 &   8.4360e-11      \\
          \hline
-        11 & 8.4146e-11   \\
+        11 & 8.8.4360e-11  \\
          \hline
-        12 &  8.4146e-11      \\
+        12 &  8.4360e-11      \\
         \hline
         
         \end{tabular}
@@ -682,30 +659,30 @@ Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
          \hline
         3 &  -3.5887e-06 \\
          \hline
-        4 &  1.2916e-10    \\
+        4 &  1.2915e-10    \\
          \hline
-        5 &    1.2916e-10  \\
+        5 &    2.5829e-10  \\
          \hline
-        6 &  1.2916e-10     \\
+        6 &  2.5829e-10     \\
          \hline
-        7 &     1.2916e-10 \\
+        7 &     2.5829e-10 \\
          \hline
-        8 &  1.2916e-10    \\
+        8 &  2.5829e-10    \\
          \hline
-        9 &       1.2916e-10   \\
+        9 &       2.5829e-10   \\
          \hline
-        10 &    1.2916e-10     \\
+        10 &    2.5829e-10     \\
          \hline
-        11 &    1.2916e-10 \\
+        11 &    2.5829e-10 \\
          \hline
-        12 &   1.2916e-10  \\
+        12 &   2.5829e-10  \\
         \hline
         
         \end{tabular}
         
     \end{table}
      \begin{itemize}
-\item x0=0.5
+\item x0=-0.5
 \end{itemize}
 \begin{table}[H]
     \centering
@@ -725,17 +702,17 @@ Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
          \hline
         6 & -8.1704e-06     \\
          \hline
-        7 &     -2.6231e-11 \\
+        7 &     -2.6233e-11 \\
          \hline
-        8 &   -2.6231e-11   \\
+        8 &   -2.6233e-11   \\
          \hline
-        9 &        -2.6231e-11 \\
+        9 &        -2.6233e-11 \\
          \hline
-        10 &     -2.6231e-11    \\
+        10 &     -2.6233e-11    \\
          \hline
-        11 &    -2.6231e-11 \\
+        11 &    -2.6233e-11 \\
          \hline
-        12 &    -2.6231e-11  \\
+        12 &    -2.6233e-11  \\
         \hline
         \end{tabular}
     \end{table}
@@ -774,7 +751,7 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
 	
 		\item Utilice los métodos para encontrar la solución de la ecuación no lineal $f(x)=0$, donde
 		
-		(i) $f_{1}(x)=xe^{x^2}-sen(x)+3cos(x)+5$.
+		(i) $f_{1}(x)=xe^{x^2}-sen(x)+4cos(x)+6, en [-2,0].$
 		
 		\begin{table}[H]
 			\centering
@@ -782,18 +759,18 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
 				\hline
 				Métodos & $x_{0}$ & Iteraciones & Cero Obtenido \\
 				\hline
-				Newton & -1 & 6 & -1.2892 \\
+				Newton & -2 &  7 & -1.3341\\
 				\hline
-				Schroder & -1 & 6 & -1.2892 \\
+				Schroder & -2 & 2 & NaN \\
 				\hline
-				Whittaker & -1 & 10 & -1.2892 \\
+				Whittaker & -2 & 10 & -1.3341 \\
 				\hline				
 			\end{tabular}
 			\end{table}	
 		
 		
 		
-		(ii) $f_{2}(x)=x^3-3x^2(2^{-x})+3x(4^{-x})-8^{-x}$, en [0,1].
+		(ii) $f_{2}(x)=x^3-3x^2(2^{-x})+3x(4^{-x})-8^{-x}, en [0,1].$
 		
 			\begin{table}[H]
 			\centering
@@ -801,16 +778,16 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
 				\hline
 				Métodos & $x_{0}$ & Iteraciones & Cero Obtenido \\
 				\hline
-				Newton & 1 & 43 & 0.6412 \\
+				Newton & 0 & 44 &  0.6412 \\
 				\hline
-				Schroder & 1 & 4 & 0.6412\\
+				Schroder & 0 & 4 & 0.6412\\
 				\hline
-				Whittaker & 1 & 66 & 0.6412\\
+				Whittaker & 0 & 68 & 0.6412\\
 				\hline				
 			\end{tabular}
 			\end{table}	
 			
-		(iii) $f_{3}(x)=cos(x+\sqrt[2]{2})+x(\frac{x}{2}+2)$, en [-2,1].	
+		(iii) $f_{3}(x)=cos(\frac{x}{2}+\sqrt{2})+x(2x+5), en [-2,\frac{1}{2}].$	
 		
 		\begin{table}[H]
 			\centering
@@ -818,11 +795,11 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
 				\hline
 				Métodos & $x_{0}$ & Iteraciones & Cero Obtenido \\
 				\hline
-				Newton & -1 & 5 & -0.1646 \\
+				Newton & -2 & 4 &  -2.2895 \\
 				\hline
-				Schroder & -1 & 5 & -0.1646\\
+				Schroder & -2 &  4 & -2.2895\\
 				\hline
-				Whittaker & -1 & 6 & -0.1646 \\
+				Whittaker & -2 & 4 & -2.2895 \\
 				\hline				
 			\end{tabular}
 		\end{table}		
@@ -853,7 +830,7 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
 				\end{figure}	
 			\end{itemize}
 			
-			Al analizar la cantidad de iteraciones utilizadas por cada método, se puede concluír que el más eficiente es el método de Schroder.
+			Al analizar la cantidad de iteraciones utilizadas por cada método, se puede concluir que el más eficiente es el método de Schroder.
 			
 			Para resolver este problema, se ocuparon los archivos newtonEj6.m, schroder.m y whittaker.m.
         \end{enumerate}
@@ -877,19 +854,19 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
             (a)\left\lbrace
           \begin{array}{ll}
                 x^2 + xy^2-x-2&=0 \\\
-                y^2 + xy^2-y+2&=0
+                y^2 + xy^2-y+4&=0
             \end{array}
             \right.
             \hspace{3cm}
             (b) \left\lbrace
            \begin{array}{ll}
                  x^2+x-y^2&=1  \\
-                 y-sen(x^2)&=0 
+                 y-cos(x^2)&=0 
             \end{array}
             \right.
         \end{math}\\
         
-        Usando el método de Newton, encuentre sus soluciones aproximadas. Para encontrar los puntos iniciales, apóyese en los gráficos que le permiten encontrar una aproximación de la solución. 
+        Usando el método de Newton, encuentre los puntos de intersección de las curvas descritas en los ítem (a) y (b). Para encontrar los puntos iniciales (x0,y0), apóyese en gráficos que le permitan encontrar una aproximación a la solución.
         
         
         Pregunta $ 1a) $\\
@@ -924,24 +901,11 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
             
             $ Recta(2) : y-sen(x^2)=0  $
             
-            \begin{figure}[h] \centering
-            \includegraphics[width=12cm]{GraficoEcEj1b}
-             \caption{Gráfico Ecuación Ej 1B}
-            \end{figure}
-        Como se observa en la figura existen 2 soluciones del sistema no lineal, gracias a la gráfica dibujada dividiremos el problema en 2 casos, ocuparemos puntos cercanos a la intersección de las curvas dibujadas y asumiremos gracias a esta que no se intersectan en otro punto ya que  $ x \in (-inf,-2) \cup (1,inf+)$ las imagenes de las funciones se alejan.
-        
-        Con el error pedido en el inicio de este item el programa no logra terminar. debido a que el error es la condición de salida y que la diferencia  obtenida de una iteración con la otra nunca llega a ser tan pequeña como el intervalo a esperar. Para solucionar esto se redefine nuestra condición de salida por otra, en este caso se ocupo una cantidad de iteraciones igual a 5-6.
-        
-        Primero encontraremos la solución que se observa en el 1er cuadrante ,en este caso ocuparemos el punto inicial $x0 = [0.5;0.5]$ Obteniendo como solución el vector
-        $ x*=[0.7272;0.5028] $ el punto $ x = 0.7272 $ , $ y = 0.5028$.
-        
-        Luego calcularemos la solución que en el gráfco se encuentra en el 2do cuadrante utilizando el punto inicial $0=[-1.8;0]$
-        obteniendo como solución el vector $x*=[-1.6663;0.3612]$ el punto  $x=-1.6663$, $y=0.3612$
-
+            
     
         \newpage
         
-        \item En un sistema de tuberías (ver figura), los caudales de un cierto fluido en cada rama y las presiones en cada nodo de la red se relacionan mediante el siguiente sistema
+        \item En un sistema de tuberías (ver figura), los caudales de un cierto fluido en cada rama y las presiones en cada nodo de la red se relacionan mediante el siguiente sistema no lineal.
         
         \begin{align*} 
             p1 - p2 &= KQ^{1,75} \\ 
@@ -991,32 +955,12 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
     \end{pmatrix}$$
     Por lo tanto como $Q = Q_1 + Q_2 $ implica que $ Q = 23.9913 $
     
-    Al igual que el ejercicio 1b) de éste item, para lograr el objetivo de encontrar una raiz se limita a una cantidad de iteraciones iguales a 3, logrando así valores cercanos a la solución de la ecuación.
+    Al igual que el ejercicio 1b) de éste ítem, para lograr el objetivo de encontrar una raíz se limita a una cantidad de iteraciones iguales a 3, logrando así valores cercanos a la solución de la ecuación.
     
-    Para realizar este item se utilizo el código de NewtonVariables.m
+    Para realizar este ítem se utilizo el código de NewtonVariables.m
     \end{enumerate}
     \newpage
-    \chapter{Investigación}
-    El método de Horner es utilizado como el paso previo para encontrar las raíces de una ecuación polinomial, es decir una función de la forma $$P(x)=a_{0}x^{n}+a_{1}x^{n-1}+...+a_{n-1}x+a_{n}$$
-    Este algoritmo permite evaluar este tipo de ecuaciones con mayor rapidez que un método común, tomando $n$ multiplicaciones y $n$ sumas para evaluar un polinomio de grado n.
-   A continuación se presenta el algoritmo utilizado para ejecutar este método:\\
-    \begin{lstlisting}
-	% n : Grado del polinomio.
-	% coeff : Vector que contiene todas las constantes que acompañan a x.
-	% x0 : Punto a ser evaluado en la función.
-	% y : Punto x0 evaluado en f(x), es decir f(x0).
-	% z : Punto x0 evaluado en f'(x), es decir f'(x0).
-    	function [y,z]=horner(n,coeff,x0)
-		y=coeff(1);
-		z=coeff(1);
-   	 	for i = 2:n-1
-			y=x0*y+coeff(i);
-			z=x0*z+y;
-    		end
-		y=x0*y+coeff(n);
-		z;
-	end
-    \end{lstlisting}
+
     
     \chapter{Conclusión}
       Del trabajo realizado se concluye lo siguiente, para el uso de ecuaciones no lineales, junto con esto los métodos que fueron aplicados para cada ítem, se logra  una amplia comprensión de como es el funcionamiento de cada uno de estos procesos para los casos a los cuales se aplicaron, esto quiere decir que se observó el comportamiento de la función en cada método, casos como el del punto fijo, secante y newton en donde la toma del punto inicial fue fundamental para ver si el método que aplicamos era el correcto, así se determinó que para este tipo de casos existía una convergencia local, ya que la dependencia de este punto era vital para que existiera convergencia. 
