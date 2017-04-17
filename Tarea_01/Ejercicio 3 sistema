@@ -1,22 +1,22 @@
 function xn = newtonsistema
  x0=[50,16,7]% donde p2=50, q1=16 , 12= 7 valores iniciales
  syms x y z% p2=x , q1=y , q2=z
- fnc=[75-x -((2.35*exp(-3))*(y+z)^1.75);x-15 -((4.67*exp(-3))*y^1.75);x-20 -((3.72*exp(-2))*z^1.75)];
- dfnc=jacobian(fnc);
- tol=10^-6;
+ fnc=[75-x -((2.35*exp(-3))*(y+z)^1.75);x-15 -((4.67*exp(-3))*y^1.75);x-20 -((3.72*exp(-2))*z^1.75)];% sistema de ecuaciones
+ dfnc=jacobian(fnc);%calcula el jacobiano del sistema
+ tol=10^-6; 
  cont= 0
  f=inline(fnc);
  jf=inline(dfnc);
- fx0=f(x0(1),x0(2),x0(3));
- jfx0=jf(x0(1),x0(2),x0(3);
- xn= x0-inv(jfx0)*fx0;
- x2=xn-x0;
- cond=(sqrt(x2(1)^2,x2(2)^2,x2(3)^2))/sqrt(xn(1)^2,xn(2)^2,xn(3)^2);
- while cond>tol
+ fx0=f(x0(1),x0(2),x0(3));% evalua el sistema en x0
+ jfx0=jf(x0(1),x0(2),x0(3);%evalua el jacobiano del sistema en x0
+ xn= x0-inv(jfx0)*fx0; %ecuacion de newton
+ x2=xn-x0;%parte de la condicion 
+ cond=(sqrt(x2(1)^2,x2(2)^2,x2(3)^2))/sqrt(xn(1)^2,xn(2)^2,xn(3)^2);%condicion ejercicio 3
+ while cond>tol %condicion de parada de newton con respecto a la tolerancia
  	x0=xn;
  	fx0=f(x0(1),x0(2),x0(3));
  	jfx0=jf(x0(1),x0(2),x0(3);
-	xn= x0-inv(jfx0)*fx0;
+	xn= x0-inv(jfx0)*fx0; %actualiza xn a los nuevos valores 
 	x2=xn-x0;
 	cond=(sqrt(x2(1)^2,x2(2)^2,x2(3)^2))/sqrt(xn(1)^2,xn(2)^2,xn(3)^2);
 	cont=cont+1;
