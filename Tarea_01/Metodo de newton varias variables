@@ -1,0 +1,19 @@
+function xn = newtonsistema(fnc,x0,tol)
+ jfnc=jacobian(fnc);            %calcula el jacobiano del sistema
+ cont=0;
+ f=subs(fnc,x0);      % evalua el sistema en x0
+ jf=subs(jfnc,x0);     %evalua el jacobiano del sistema en x0
+ xn= x0-inv(jf)*f;          %ecuacion de newton
+ x2=xn-x0;          %parte de la condicion 
+ cond=(sqrt(x2(1)^2,x2(2)^2,x2(3)^2))/sqrt(xn(1)^2,xn(2)^2,xn(3)^2);      %condicion ejercicio 3
+ while cond>tol    %condicion de parada de newton con respecto a la tolerancia
+ 	x0=xn;
+ 	f=double(subs(fnc,x0));
+  jf=double(subs(jfnc,x0));
+	xn= x0-inv(jf)*f;   %actualiza xn a los nuevos valores 
+	x2=xn-x0;
+	cond=(sqrt(x2(1)^2,x2(2)^2,x2(3)^2))/sqrt(xn(1)^2,xn(2)^2,xn(3)^2);
+	cont=cont+1;
+ end
+ cont
+end
