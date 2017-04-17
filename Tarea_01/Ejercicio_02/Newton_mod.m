@@ -1,4 +1,5 @@
-function xn = newton(fnc,x0,tol)%metodo de newton ej 5 funcion debe ser ingresada con sym
+function xn = newton_mod(fnc,x0,tol)%metodo de newton ej 5 funcion debe ser ingresada con sym
+ tic 
  dfnc=diff(fnc);%calcula la derivada de fnc
  f=subs(fnc,x0);%evalua fnc en xo
  df=subs(dfnc,x0);%evalua la derivada de fnc en x0
@@ -8,11 +9,11 @@ function xn = newton(fnc,x0,tol)%metodo de newton ej 5 funcion debe ser ingresad
  while cond>tol%condicion de parada de newton respecto a una tolerancia
      x0=xn;
      f=double(subs(fnc,x0));
-     df=double(subs(dfnc,x0));
      xn=double(x0-f/df);% actualiza xn con nuevos valores
      cond=double(abs(xn-x0));
      cont=cont+1;
  end 
+ toc
  cont
- f = inline(fnc);
+ 
 end%se usa double en las sentecias para obtener un valor numerico ya que sin este quedaba la ecuacion completa
