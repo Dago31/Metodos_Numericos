@@ -1,4 +1,4 @@
-function xn = newton_mod(fnc,x0,tol)%metodo de newton ej 5 funcion debe ser ingresada con sym
+function xn = newton_mod(fnc,x0,tol)%metodo modificado de newton funcion debe ser ingresada con sym
  tic 
  dfnc=diff(fnc);%calcula la derivada de fnc
  f=subs(fnc,x0);%evalua fnc en xo
