@@ -1,4 +1,4 @@
-function xn = newton(fnc,x0,tol)%metodo de newton ej 5 funcion debe ser ingresada con sym
+function xn = newton(fnc,x0,tol)%metodo de newton  funcion debe ser ingresada con sym
  dfnc=diff(fnc);%calcula la derivada de fnc
  f=subs(fnc,x0);%evalua fnc en xo
  df=subs(dfnc,x0);%evalua la derivada de fnc en x0
