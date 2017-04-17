@@ -16,4 +16,5 @@ function xn = newtonsistema(fnc,x0,tol)
 	cont=cont+1;
  end
  cont
+ f=inline(fnc);
 end
