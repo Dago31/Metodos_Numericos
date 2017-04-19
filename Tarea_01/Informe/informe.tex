@@ -1,5 +1,4 @@
 \documentclass{udpreport}
-%\headertext{Metodos Numéricos}
 \title{Metodos Numéricos : Tarea 1}
 \author{Andrés Comte, Benjamín Morales, Dagoberto Navarrete.}
 \usepackage{amssymb}
@@ -11,26 +10,8 @@
 \usepackage{listings}
 \usepackage{color}
 
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\lstset{frame=tb,
-  language=MATLAB,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=4
-}
+
 
 \begin{document}
 \maketitle
@@ -38,6 +19,8 @@
 \listoffigures
 
 \chapter{Introducción}
+
+En el siguiente trabajo el principal objetivo fue analizar los tiempos de ejecución de los distintos métodos trabajados en Matlab. Para esto usaron varios métodos, como el de bisección, falsa posición, secante y Newton-Rapshon,  para encontrar las raíces de varias ecuaciones no lineales, y así poder comparar la efectividad de los métodos en cada ejercicio.
 
 .
 \chapter{Resolución de ecuaciones no lineales:}
@@ -172,6 +155,21 @@ de las siguientes ecuaciones no lineales en los intervalos indicados:
                  \hline
                 \end{tabular}
             \end{table}
+    Con una tolerancia de $10^{−5}$. Haga una comparación de los métodos en cuanto a la cantidad de iteraciones, el error cometido, tiempo de CPU. ¿Cual de ellos fue mas eﬁciente?.\\
+    Si se comparan lo métodos por cantidad de iteraciones, el mas óptimo seria de la secante ya que al observar su curva se mantiene casi constantes y cubre menos área que las de los otros métodos, esto queda reflejado en el siguiente gráfico:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=10cm]{it.png}
+        \caption{Gráfico cantidad de iteraciones.}
+        \end{figure}
+    Ahora si se compara por tiempos de ejecución, nuevamente el óptimo seria el método de la secante, lo cual queda demostrado en el siguiente gráfico:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=10cm]{tiempo1.png}
+        \caption{Gráfico Tiempo CPU.}
+        \end{figure}
+    Continuando con las comparaciones, si en este caso se realiza por porcentaje de error, los métodos óptimos seria en primer lugar el de bisección ya que presento un error de 0\% en todas las funciones, luego vendría el de falsa posición que contada con un error casi despreciables, y finalmente el de la secantes, ya que en una función presento un error de casi el 100\%.
+    Finalmente para concluir, el mejor método para utilizar, es el de la secante, aunque si la función tiene un comportamiento similar al de la ecuación b lo mejor seria optar por otro método.
       
     \newpage
     
@@ -180,7 +178,7 @@ de las siguientes ecuaciones no lineales en los intervalos indicados:
 \newpage
 \item Considere la ecuación no lineal $f(x)= \frac{1}{2}+\frac{1}{4}x^2-xsen(x)-\frac{1}{2}cos(2x)=0$
     	\begin{enumerate}
-    	\item  Usando el método de Newton con punto inicial $x_{0}=\frac{\pi}{2}$ encuentre la solución aproximada de $f$. Para ello realize las iteraciones necesarias hasta que se cumpla el criterio de parada $ |x_{n+1} - x_{n} < 10^{-6} $
+    	\item  Usando el método de Newton con punto inicial $x_{0}=\frac{\pi}{2}$ encuentre la solución aproximada de $f$. Para ello realize las iteraciones necesarias hasta que se cumpla el criterio de parada $ |x_{n+1} - x_{n} |< 10^{-6} $
     	\begin{figure}[H]
         \centering
         \includegraphics[width=10cm]{ec5.png}
@@ -192,23 +190,25 @@ de las siguientes ecuaciones no lineales en los intervalos indicados:
         				\hline
         				$x_{0}$ & Cero Obtenido & Iteraciones\\
         				\hline
-        				$\frac{\pi}{2} $ &  2.7904*10^(-6) & 56\\
+        				$\frac{\pi}{2} $ &   1.8955 & 17\\
         				\hline 
         			\end{tabular}
         		\end{table}
         	
         	\item Repetir el proceso con el método de Newton modificado, esto es, con la iteración $$x_{n+1} = x_{n} - \frac {f(x_{n})} {f'(x_{0})} $$
-        	¿Que método converge mas rápido ?
+        	
         \begin{table} [H]
         			\centering
         			\begin{tabular}{|c|c|c|}
         				\hline
         				$x_{0}$ & Cero Obtenido & Iteraciones\\
         				\hline
-        				$\frac{\pi}{2} $ &  0.0025 & 2512\\
+        				$\frac{\pi}{2} $ & 1.8949 & 561\\
         				\hline 
         			\end{tabular}
         		\end{table}
+        ¿Que método converge mas rápido ?\\
+        	$R:$El método que converge mas rápido es el de newton norma, ya que si se observa, con similares condiciones de entrada, el método de Newton normal llega a la solución en menos iteraciones.\\
         \item Repita el proceso tomando como valores iniciales $x_{0}=5\pi$ y $x_{0}=10\pi$ ¿La sucesión construida con estos puntos iniciales converge?
         	 	\begin{table} [H]Newton 
         			\centering
@@ -216,9 +216,9 @@ de las siguientes ecuaciones no lineales en los intervalos indicados:
         				\hline
         				$x_{0}$ & Cero Obtenido & Iteraciones\\
         				\hline
-        				$5\pi$ & 1.8972 & 1665 \\
+        				$5\pi$ &  1.8955 & 21 \\
         				\hline 
-        				$10\pi$ & 1.8972 & 1669\\
+        				$10\pi$ &-6.1408e-07 & 65\\
         				\hline
         			\end{tabular}
         		\end{table}
@@ -229,12 +229,13 @@ de las siguientes ecuaciones no lineales en los intervalos indicados:
         				\hline
         				$x_{0}$ & Cero Obtenido & Iteraciones\\
         				\hline
-        				$5\pi$ & 1.9003 & 4713 \\
+        				$5\pi$ & 1.9014 &  5749 \\
         				\hline 
         				$10\pi$ & 1.9023 & 6620\\
         				\hline
         			\end{tabular}
         		\end{table}
+        $R:$Converge, ya que en ambos casos se llega a un valor real, y posible solución.\\
         		
         \item Use el método de la secante para encontrar la solución aproximada tomando como puntos iniciales $x_{0}=5\pi$ y $x_{0}=10\pi$, como criterio de parada el mismo descrito en (a).
         	\begin{table} [H] 
@@ -273,23 +274,16 @@ Hint.- Usar método de Newton, tomando como punto inicial i0 = 0.03.
 Suponga ahora que desean endeudarse en 16 años en lugar de 10. Cual sería el interés en esta situación?
 
 
-Resp: Al realizar el método de Newton aplicándolo a optimización, se obtiene un interes de 10.24\%.Si se Consideraba un error de 5\% el porcentaje de interes era excesivamente alto (orden del 40\%), es por ello que se realizarón iteraciones hasta observar que el valor no cambiaba, así se encontro el valor en el que converge a los 10 años del préstamo.
+R:Mediante la ecuación de anualidad ordinaria, y remplazando  los datos obtenidos en el enunciado se obtuvo la siguiente ecuación
+\begin{equation}
+    1600=\frac{2400}{i}\left(1-\left(1+i\right)^{-20}\right)
+\end{equation}
+Donde nuestra función a iterar mediante el método de newton es (2.2), el cual usaremos como punto inicial i=0.03
+\begin{equation}
+    f(i)=\frac{2400}{i}\left(1-\left(1+i\right)^{-20}\right)-1600
+\end{equation}
+El resultado obtenido mediante el método de newton es de un interés igual al 13,8\%, el cual es un porcentaje viable para los bancos ya que se tendrá bastante ganancia de parte del banco. Para el caso de que quiera endeudarse en 16 años equivalentes a 32 periodos, su interés se ve aumentado en una cantidad igual al 14.8\%. Al ir aumentado los años de endeudamiento este converge a un valor de 15\%.\par
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=12cm]{1}
-    \caption{Interés a los 10 años del préstamo}
-\end{figure}
-Suponga ahora que desean endeudarse en 15 años en lugar de 10 ¿Cual sera el interes en esta situacion?
-\\
-Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
-\\
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=12cm]{3}
-    \caption{Interés a los 15 años del préstamo}
-\end{figure}
-\newpage
 
 
 \item Considere la función \(f(x) = x*cos(x)-e^x+ 1\). % pregunta 5 
@@ -334,7 +328,7 @@ Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
          \hline
         9 & NaN      \\
          \hline
-        10 &  0 NaN       \\
+        10 &   NaN       \\
          \hline
         11 &  NaN        \\
          \hline
@@ -467,7 +461,7 @@ Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
         
     \end{table}
  \vspace{3cm}   
- \item Teniendo en cuenta las siguientes funciones de iteración de punto fijo.  Realice unas 12 iteraciones de punto fijo, usando como puntos iniciales x0 = 0.5 y x0 = 0.5.\\   
+ \item Teniendo en cuenta las siguientes funciones de iteración de punto fijo.  Realice unas 12 iteraciones de punto fijo, usando como puntos iniciales x0 = 0.5 y x0 = -0.5.\\   
  
  \begin{equation}
  g3(x) = x-\frac{f(x)}
@@ -716,18 +710,19 @@ Resp: 5.1\% . El proceso de busqueda fue similar al anterior.
         \hline
         \end{tabular}
     \end{table}
-\newpage
+    
 \item Que puede decir sobre el comportamiento de las iteraciones de punto fijo calculadas anteriormente.
 \begin{itemize}
 
-\item De la función g2(x), tanto para el punto inicial x0=0.5 como para x0=-0.5, desde determinada iteración la solución se volvió imaginaria, por lo tanto g2(x), al no ser una función continua, no tiene puntos fijos.
-\item En cuanto a la función g3(x),para el punto inicial x0=0.5, la función cada vez va convergiendo a la solución, por lo que 0.5 es punto fijo de g3(x).\\ Ahora para x0=-0.5 al igual que en el anterior punto fijo, este igual converge a la solución, declarandose así que -0.5 tambien es un punto fijo de g3(x).
-\item En cuanto a la función g4(x), para el punto x0=0.5 en las primeras iteraciones va convergiendo a la solución, hasta que se mantiene fijo en un valor. De esto se deduce que se encuentra la solución tomando como punto fijo 0.5.\\
-Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hasta llegar a un valor fijo el cual no siguió variando, se deduce lo mismo que en el caso anterior, en el que a partir del punto fijo -0.5, se llega a la solución.
-\item Acerca de la función g5(x) pasa algo similar a lo que sucedio con g4(x), en las cuales se encuentra la solución a partir de los puntos fijos tomados.
+\item En la ecuación $g1$ en el momento de tomar de punto inicial 0.5 las iteraciones punto fijo divergen, mientras que si tomábamos como punto de inicio -0.5, las iteraciones divergían al punto -0.2871, lo que nos indica que este sea una posible solución de la ecuación.
+\item En la ecuación $g2$ en amos casos no divergieron a un valor en concreto las iteraciones, es mas incluso tenían parte imaginaria las iteraciones, lo que indica que esta ecuación no nos sirve para encontrar una posible solución.
+\item En la ecuación $g3$ las iteraciones punto fijo no convergieron a ningún valor, pero si se acercaba a pasos agigantados a la solución, lo que nos indica que tal vez con mas iteraciones habría llegado a la solución.
+\item En la ecuación $g4$ en ambos casos converge a un valor especifico, el cual se aproxima harto a la solución, de los 3 casos mencionados anteriormente este es el que mas se aproxima a la solución, lo que indica que esta ecuación seria la mejor para determinar solución en este caso.
 \end{itemize}
 
+
 \end{enumerate}
+\newpage
 
 \item {\bf Métodos iterativos:} A continuación se describen algunos métodos de iteración de punto fijo que encuentran la raíz aproximada de f(x) = 0
 \begin{itemize}
@@ -810,29 +805,60 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
 				\item Método de Newton:
 				\begin{figure}[H]
 					\centering	
-						\includegraphics[width=10cm]{NewtonEj6} 
-						\caption{Método de Newton}
+				        \includegraphics[width=10cm]{newton1.jpg} 
+						\caption{Método de Newton f1}
+				\end{figure}
+				\begin{figure}[H]
+					\centering	
+				        \includegraphics[width=10cm]{newton2.jpg} 
+						\caption{Método de Newton f2}
+				\end{figure}
+				\begin{figure}[H]
+					\centering	
+				        \includegraphics[width=10cm]{newton3.jpg} 
+						\caption{Método de Newton f3}
 				\end{figure}
 								
 				\item Método de Schröder: 
 				 \begin{figure}[H]
 					\centering
-					\includegraphics[width=10cm]{SchroderEj6}
-					\caption{Método de Schröder}
-				\end{figure}	
+					Por motivo que el valor converge a NaN no se puede realizar el gráfico de la función 1.
+				\end{figure}
+				
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=10cm]{schroder2.jpg}
+					\caption{Método de Schröder f2}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+					\includegraphics[width=10cm]{schoder3.jpg}
+					\caption{Método de Schröder f3}
+				\end{figure}
+				 
 				 
 				 
 				 \item Método de Whittaker;
 				 \begin{figure}[H]
 					\centering
-						\includegraphics[width=10cm]{WhittakerEj6}
-						\caption{Método de Whittaker}
-				\end{figure}	
+						\includegraphics[width=10cm]{Whittaker1.jpg}
+						\caption{Método de Whittaker f1}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+						\includegraphics[width=10cm]{Whittaker2.jpg}
+						\caption{Método de Whittaker f2}
+				\end{figure}
+				\begin{figure}[H]
+					\centering
+						\includegraphics[width=10cm]{Whittaker3.jpg}
+						\caption{Método de Whittaker f3}
+				\end{figure}
 			\end{itemize}
 			
-			Al analizar la cantidad de iteraciones utilizadas por cada método, se puede concluir que el más eficiente es el método de Schroder.
 			
-			Para resolver este problema, se ocuparon los archivos newtonEj6.m, schroder.m y whittaker.m.
+			
+			Para resolver este problema, se ocuparon los archivos Newton5.m, schroder.m y whittaker.m.
         \end{enumerate}
 \end{enumerate}
 \newpage
@@ -874,33 +900,29 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
             
             $ Recta(1) : x^2+xy^2-x-2=0 $
             
-            $ Recta(2) : y^2 +xy^2-y+2=0 $
+            $ Recta(2) : y^2 +xy^2-y+4=0 $
             
             \begin{figure}[h]
                 \centering
-                \includegraphics[width=15cm]{GraficoEcEj1a}
+                \includegraphics[width=15cm]{ec2sis.png}
                  \caption{Gráfico Ecuación Ej1A}
             \end{figure}
             
-            Como se observa en el grafico las rectas (1) y (2) se intersectan 2 veces, mientras que luego tienden a alejarse una de la otra. \\Analizaremos las 2 soluciones que existen dentro de este intervalo de gráfica mostrado anteriormente. Luego, realizando un zoom en donde se encuentran las intersecciones, se obtiene lo siguiente.\\
             
-            \begin{figure}[H]
-               \centering   \includegraphics[width=13cm]{GraficoEcEj1azoom}
-                \caption{Gráfico Ecuación Ej 1A con acercamiento}
-            \end{figure}
-            Ahora, para lograr obtener nuesta solución que se encuentra en el 2do cuadrante, ocuparemos un punto cercano a la interseccion. En este caso ocuparemos $ x0=[-2;1] $ y el resulado obtenido como primera solución de la ecuación es:
-            $ x*=[-1.6088;1.1686 ]$ siendo el punto  $x = -1.6088$,$y = 1.1686$
-            
-            Como ya obtuvimos la primera solución, buscaremos la segunda, la cual se encuentra en el 3er cuadrante, para el cual igualmente usaremos un punto cercano a lo que se muestra en la gráfica como interseccion de las funciones.Por lo tanto ocuparemos el $x0=[-2;-1.8] $ obteniendo como el resultado el vector:
-            $x*=[-2.4022;-1.6030]$ siendo el punto $x=-2.4022$, $y=-1.6030$
+            Mediante las gráficas obtenida Figura 3.1, se puede visualizar que hay 2 intersecciones, una ubicada en el segundo cuadrante y la otra en el tercer cuadrante. Para encontrar la intersección de las curvas en el tercer cuadrante se utilizo el método de newton en varias variable con un punto inicial de $x0=[-3,-2]$, arrojando como resultado la intersección de las curvas generada en el punto $x=[-2.8401,-1.7708]$.\par Para calcular la intersección en el 2 cuadrante se procedió de la misma manera pero cambiando el punto inicial, el cual se utilizado  $x0=[-2,3]$, obteniendo como resultado la intersección en el punto $x=[-2.1401,1.4851]$.
 
-        \newpage    
         Pregunta $ 1b)$
         
             $ Recta(1) : x^2 + x -y^2=1 $
             
-            $ Recta(2) : y-sen(x^2)=0  $
+            $ Recta(2) : y-cos(x^2)=0  $
+            \begin{figure}[h]
+                \centering
+                \includegraphics[width=15cm]{ec2sisb.png}
+                 \caption{Gráfico Ecuación Ej1B}
+            \end{figure}
             
+         Observando la gráfica Figura 3.2 se aprecia que las curvan tienen 2 intersecciones,repitiendo el procedimiento ejecutado en el inciso a),para la intersección en el primer cuadrante se escoje el punto inicial $xo=[1.1] $ obteniendo como resultado $x=[0.8477,0.7526]$, para el calculo de la intersección en el tercer cuadrante utilizamos el punto inicial $x0=[-2,-1]$, obteniendo la intersección en $x=[-1.9143,-0.8662]$.
             
     
         \newpage
@@ -927,7 +949,7 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
     Usando el método de Newton en varias variables, determine los caudales en todas las ramas, y la presión en el nodo 2 suponiendo que $Q = Q_1 + Q_2 $. Use como valores iniciales: $ p_2^0= 50 psi,$  $Q_2^0=7$ y  $Q_1^0=16$
     
     
-    Reescribiendo las ecuaciones con valores dados:
+    Al remplazar los valores iniciales en la ecuación queda de la forma:
     
     \begin{align*} 
         75 - p2 &=  2.35e^{-3}(Q_1+Q_2)^{1.75} \\ 
@@ -935,7 +957,7 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
         p2 - 20 &= 4.72e^{-2}Q_2^{1.75}
     \end{align*}
     
-    Escribimos vector de funciones de la forma $f(x) = 0$
+    Luego procedemos a escribir la ecuación en su forma vectorial con  $f(x) = 0$
 
    $$\begin{pmatrix}
         75 - p2 - 2.35e^{-3}(Q_1+Q_2)^{1.75} &= 0 \\
@@ -955,16 +977,17 @@ Lo mismo sucedió con x0=-0.5 desde determinada iteración fue convergiendo hast
     \end{pmatrix}$$
     Por lo tanto como $Q = Q_1 + Q_2 $ implica que $ Q = 23.9913 $
     
-    Al igual que el ejercicio 1b) de éste ítem, para lograr el objetivo de encontrar una raíz se limita a una cantidad de iteraciones iguales a 3, logrando así valores cercanos a la solución de la ecuación.
+    Para poder encontrar una raíz con valores cercanos a la solución de la ecuación, se limita la cantidad de iteraciones que realiza el código a un numero de 3 iteraciones.
     
     Para realizar este ítem se utilizo el código de NewtonVariables.m
     \end{enumerate}
     \newpage
 
-    
     \chapter{Conclusión}
-      Del trabajo realizado se concluye lo siguiente, para el uso de ecuaciones no lineales, junto con esto los métodos que fueron aplicados para cada ítem, se logra  una amplia comprensión de como es el funcionamiento de cada uno de estos procesos para los casos a los cuales se aplicaron, esto quiere decir que se observó el comportamiento de la función en cada método, casos como el del punto fijo, secante y newton en donde la toma del punto inicial fue fundamental para ver si el método que aplicamos era el correcto, así se determinó que para este tipo de casos existía una convergencia local, ya que la dependencia de este punto era vital para que existiera convergencia. 
-\\
-En general, la aplicación de estos métodos se hicieron con el fin de aproximarse cada vez más a la solución, es por ello que se realizaban múltiples iteraciones para la mayoría de los casos y observando en todo momento su comportamiento. Finalmente, la realización del trabajo es fundamental para comprender de manera practica la teoría de los métodos de aproximación. 
+    
+   Finalizando, podemos concluir que para el uso de ecuaciones no lineales  combinado con el uso de los métodos utilizados durante el informe, podemos ver en concreto el funcionamiento de cada método y respecto a esto cómo se comporta la función en cada método. Se pudo comprender que en casos como el método de Newton, secante, etc. La elección del punto fijo es clave para la eficacia del funcionamiento de los métodos, debido a que en caso de una elección errónea podría no haber convergencia local, debido a que la dependencia del punto dependerá la convergencia. 
+   
+   Finalmente la aplicación de los métodos estudiados son esenciales para la obtención de valores que comúnmente no podrían ser obtenidos de manera convencional, debido a la complejidad de estos. Este trabajo permitió comprender de manera práctica y fácil la teoría de los métodos numéricos estudiados.
+      
 
 \end{document}
