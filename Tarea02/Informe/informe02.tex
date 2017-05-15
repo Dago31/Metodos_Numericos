@@ -25,20 +25,15 @@
 	
  \section{Aplicación de los esquemas programados}
  \begin{enumerate}
- 	\item   Una matriz de Hilbert $H = (hij )$ es una matriz cuyos elementos son de la forma:\\
- 	\centering
- 	    $h_{ij} = \frac{1}{i+j-1},   i,j=1,2.....n$
+ 	\item   
  		\begin{enumerate}
- 			\item	
- 			\begin{figure}[H]
- 				\centering
- 				\includegraphics[width=9cm]{grafo1-a}
- 				\caption{Gráfico del número de condición para una matriz de Hilbert de tamaño n}
- 			\end{figure}
- 			Se puede observar en figura 2.1 que entre más grande es el tamaño de la matriz de Hilbert, más grande es su número de condición. Este, al estar significativamente alejado del 1, implica que la matriz está mal condicionada. Esto siginifca, que al ocupar esta matriz como matriz de coeficiente, los resultados obtenidos, no serán tan exactos.  %explica que significa que esté mal condicionada
- 			\item 
+ 			\item 	Usando la norma $|| · ||_{\infty}$ calcule el numero condición de la matriz H, para n = 5 hasta n = 30.
+Represente en una gráfica el resultado obtenido. Que puede decir de la matriz H.
+ 			
+ 			\item Sea $b_{i} = \sum_{j=1}^n a_{ij}$ para $i = 1...n$. Usando descomposición LU encuentre la solución $x_{a}$ del
+sistema $H_{x} = b$ cuando $n = 5, 10, 15, 20$.
  				\begin{itemize} 				
- 				\item Para n=6:
+ 				\item Para n=5:
  				
  				$x_{a} = \left(\begin{array}{c} 1.0\\ 1.0\\ 1.0\\ 1.0\\ 1.0\\ 1.0\\ \end{array}\right)$
  				\\
@@ -48,17 +43,18 @@
  				$x_{a} = \left(\begin{array}{c} 1.0\\ 1.0\\ 1.0\\ 1.0\\ 1.0\\ 1.0\\ 0.9998\\ 1.0\\ 0.9999\\ 1.0 \end{array}\right)$
  				\\
  				\\
- 				\item Para n=20:
+ 				\item Para n=15:
  				
  				$x_{a} = \left(\begin{array}{c} 1.0\\ 1.0\\ 0.9992\\ 1.008\\ 0.9865\\ 0.6493\\ 4.094\\ -11.3\\ 28.09\\ -30.78\\ 14.27\\ 5.74\\ 8.759\\ -22.04\\ 9.068\\ 0.1336\\ 29.05\\ -42.82\\ 26.48\\ -4.379 \end{array}\right)$
  				\\
  				\\
  				\newpage
- 				\item Para n=30:
+ 				\item Para n=20:
  				
  				$x_{a} = \left(\begin{array}{c} 1.0\\ 1.0\\ 1.0\\ 0.9929\\ 1.055\\ 0.7579\\ 1.695\\ -0.8953\\ 7.118\\ -14.6\\ 22.59\\ -5.381\\ -19.13\\ 19.89\\ 11.04\\ -26.6\\ 29.17\\ -27.26\\ 32.59\\ -26.64\\ 8.374\\ -8.23\\ 29.33\\ 9.701\\ -39.71\\ -9.034\\ 39.38\\ 2.024\\ -19.37\\ 8.151 \end{array}\right)$
  			\end{itemize}
- 			\item 
+ 			\item Sea $x_{T} = (1, 1, . . . , 1)$ la solución exacta. Calcule las siguientes medidas $rfe = \frac{||x_{T}-x_{a}||_{\infty}}{||x_{T}||_{\infty}} , rbe = \frac{||b-Hx_{a}||_{\infty}}{||b||_{\infty}}$ y $\frac{rfe}{rbe}$ cuando n = 5, 10, 15, 20. Grafique ambos errores para cada n. Comente los
+resultados.
  			\begin{figure}[H]
  				\centering
  				\includegraphics[width=9cm]{grafo1-rfe}
@@ -87,13 +83,12 @@
  	 \begin{enumerate}
  	    \item Programe los tres algoritmos
  	    \item  Grafique la solución obtenida por cada método. Compare con la solución original:
- 	    \item Mencione en una tabla, la cantidad de iteraciones y el tiempo de ejecución, que usaron cada uno
-de los métodos para obtener la solución aproximada. Comente sus resultados.
+ 	    \item Mencione en una tabla, la cantidad de iteraciones y el tiempo de ejecución, que usaron cada uno de los métodos para obtener la solución aproximada. Comente sus resultados.
  	  \end{enumerate}
       
         \item
                 \begin{enumerate}
-            \item Suponiendo que m = n, encuentre la solución del sistema anterior vía eliminación Gaussiana, cuando n = 8,15,20,50.
+            \item Suponiendo que m = n, encuentre la solución del sistema anterior vıa eliminación Gaussiana, cuando $n = 8, 15, 20, 50$.
             \begin{table}[H]
         \centering
             \begin{tabular} {|c|}
@@ -242,7 +237,7 @@ x_{25}= -3,58E+08 & $x_{50} = -2,30E+06$\\
 \hline
 \end{tabular}
 \newpage
-\item Grafique la función $f$ versus el polinomio $g$ para $n = 8$, $15$, $20$, $50$. Comente sus resultados.
+\item Grafique la función $f$ versus el polinomio $g$ para $n = 8, 15, 20, 50$. Comente sus resultados
     \begin{figure}[H]
     \centering
     \subfloat[$n=8$]{{\includegraphics[width=9cm]{datos-8}}}
@@ -258,21 +253,24 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
 
  	\item 
  	\begin{enumerate}
- 			\item \begin{itemize}
+ 			\item Aplique los métodos iterativos: Jacobi, Gauss-Seidel y Relajación con $w = 0.7$ y $w = 1.3$, con punto inicial $x(0) = (0, . . . , 0)$ para encontrar la distribución inicial $s^0$, cuando $n = 10, n = 20$ y $n = 40$.
+ 			\begin{itemize}
  				\item Al ocupar el método de Richardson, en ambos casos, la matriz definida por $I-M^5$ tiene un radio espectral mayor a 1. Siendo 1.0084 cuando $n=20$ y 1.0091 para $n=40$
  				\item Lo mismo sucede con el método de Jacobi. Cuando $n = 20$, el radio espectral de la matriz definida por $I-Q^{-1}M^5$ tiene un valor de 3.8417, mientras que vale 3.8517 cuando  $n=40$.
  				\item Al ocupar el método de Gauss-Seidel, se encuentre el mismo inconveniente. Con valores del radio espectral 1.0862 y 1.0945, respectivamente.
  				\item Por último, cuando se uitliza el método de Relajación, nuevamente, se encuentra el mismo problema. Esta vez, los valores del radio espectral cuando $n=20$ son 1.0222, 1.0338 y 1.0382, para $w=0.7, 1.3,1.6$ respectivamente. Pr otra parte, cuando $n=40$, este vale 1.0242, 1.0369, 1.0432 para los respectivos valores de $w$
  			\end{itemize}
  			\newpage
- 			\item Para todos los métodos se ocupó una tolerancia de 0.0001 y como criterio de parada se utilizó $\frac{\norm{x^{k+1}-x^{k}}_{2}}{\norm{x^{k+1}}_{2}}\leq 0.0001$. 
+ 			\item Para cada método, mencione el criterio de parada y tolerancia, la convergencia (usando el radio espectral), la cantidad de iteraciones, el tiempo usado.\\
+ 			Para todos los métodos se ocupó una tolerancia de 0.0001 y como criterio de parada se utilizó $\frac{\norm{x^{k+1}-x^{k}}_{2}}{\norm{x^{k+1}}_{2}}\leq 0.0001$. 
  			Como ninguno de los métodos convergió, no se puede calcular la cantidad de iteraciones ni el tiempo utilizado.
  			
 		\end{enumerate} 	  
 
 	\item
  		\begin{enumerate}
-			\item Como la matriz de coeficientes no tiene filas nulas ni filas que sean multiplos de otras, se puede afirmar que el determinante siempre es distinto de 0. Esto nos demuestra que esta matriz tiene una solución única. Para demostrar que el vector $x_{e} = \frac{1}{n+1}(1,2,...,n)$ es solución del sistema, ocuparemos una matriz de $6 \times 6$ a modo de ejemplo.
+			\item Comprobar que el vector $x_{e} = \frac{1}{n+1}(1, 2, . . . , n)$  es la única solución del sistema anterior.\\
+			Como la matriz de coeficientes no tiene filas nulas ni filas que sean multiplos de otras, se puede afirmar que el determinante siempre es distinto de 0. Esto nos demuestra que esta matriz tiene una solución única. Para demostrar que el vector $x_{e} = \frac{1}{n+1}(1,2,...,n)$ es solución del sistema, ocuparemos una matriz de $6 \times 6$ a modo de ejemplo.
 			\begin{equation}
 				\textrm{El sistema definido por} Ax = b
 				\textrm{ Donde } A = \left(\begin{array}{cccccc} 2.0 & -1.0 & 0 & 0 & 0 & 0\\ -1.0 & 2.0 & -1.0 & 0 & 0 & 0\\ 0 & -1.0 & 2.0 & -1.0 & 0 & 0\\ 0 & 0 & -1.0 & 2.0 & -1.0 & 0\\ 0 & 0 & 0 & -1.0 & 2.0 & -1.0\\ 0 & 0 & 0 & 0 & -1.0 & 2.0 \end{array}\right)
@@ -289,7 +287,7 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
 			
 			Por lo tanto, se concluye que el vector $x_{e} = \frac{1}{n+1}$
 			
-			\item 	
+			\item Usando la forma implementable de los métodos iterativos (Jacobi, Gauss-Seidel y Relajación con $w = 0.5, w = 1.6$) y la punto inicial $x^0 = (1, . . . , 1)$, encuentre la solución del sistema lineal cuando $n = 25, n = 50 $ y $ n = 60$.	
 			\begin{itemize}
 				\item Cuando se ocupa el método de Richardson, este no converge para ninguno de los tres casos, ya que los valores del radio espectral de la matriz definida por $I-A$ son mayores a 1. Teniendo valores de 2.9854, 2.9962, 2.9973 para $n=25, n=50$ y $n=60$ respectivamente.
 				
@@ -334,7 +332,8 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
 				n = 60: $x_{a} =\left(\begin{array}{c} 0.02017\\ 0.04033\\ 0.06046\\ 0.08056\\ 0.1006\\ 0.1206\\ 0.1406\\ 0.1604\\ 0.1802\\ 0.1999\\ 0.2195\\ 0.239\\ 0.2583\\ 0.2776\\ 0.2967\\ 0.3157\\ 0.3345\\ 0.3532\\ 0.3717\\ 0.39\\ 0.4082\\ 0.4262\\ 0.4441\\ 0.4617\\ 0.4792\\ 0.4965\\ 0.5136\\ 0.5305\\ 0.5473\\ 0.5638\\ 0.5802\\ 0.5963\\ 0.6123\\ 0.628\\ 0.6436\\ 0.659\\ 0.6743\\ 0.6893\\ 0.7042\\ 0.7189\\ 0.7334\\ 0.7478\\ 0.762\\ 0.7761\\ 0.79\\ 0.8038\\ 0.8175\\ 0.8311\\ 0.8445\\ 0.8578\\ 0.8711\\ 0.8842\\ 0.8973\\ 0.9103\\ 0.9232\\ 0.9361\\ 0.9489\\ 0.9617\\ 0.9745\\ 0.9872 \end{array}\right)$
 				\end{itemize}
 			\end{itemize}
-			\item Para todos los métodos se ocupó una tolerancia de 0.0001 y como criterio de parada se utilizó $\frac{\norm{x^{k+1}-x^{k}}_{2}}{\norm{x^{k+1}}_{2}}\leq 0.0001$. 
+			\item Para cada metodo, mencione el criterio de parada y tolerancia, la convergencia (usando el radio espectral), la cantidad de iteraciones, el tiempo usado. Calcule $\frac{||x_{e}-x_{a}||_{\infty}}{||x_{e}||_{\infty}}$. Comente sus resultados.\\
+			Para todos los métodos se ocupó una tolerancia de 0.0001 y como criterio de parada se utilizó $\frac{\norm{x^{k+1}-x^{k}}_{2}}{\norm{x^{k+1}}_{2}}\leq 0.0001$. 
 			\begin{itemize}
 				\item Jacobi:
 					\begin{table}[H]
@@ -418,7 +417,8 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
  	        Se puede observar que la cantidad de iteraciones y el error de los métodos de Gauss-Seidel y Jacobi tienen los mismos valores, aunque este último toma más tiempo.
  	        \\
 			Por otra, parte al analizar los resultados del método de Relajación para los diferentes valores de $w$, se puede percatar de que a entre más grande es el valor de $w$, más rápido converge, además de que disminuye el error. \newpage
- 	        \item Los resultados encontrados al utilizar la forma general del método de Gauss-Seidel, son:
+ 	        \item Si en lugar de usar la forma implementable del método de Gauss-Seidel, se usa la forma general $x^{k+1} = (I-Q^{-I}_{G-S}A)x^k+Q^{-I}_{G-S}b$, cual es la solución del sistema y cual es el tiempo requerido para $n = 25$ y $n = 50$? Compare la solución obtenida en (b) con la que encuentra mediante este proceso.\\
+ 	        Los resultados encontrados al utilizar la forma general del método de Gauss-Seidel, son:
  	        
  	        n = 25: 
  	       	$x_{a} = \left(\begin{array}{c} 0.03916\\ 0.0783\\ 0.1174\\ 0.1565\\ 0.1955\\ 0.2345\\ 0.2734\\ 0.3122\\ 0.351\\ 0.3897\\ 0.4283\\ 0.4669\\ 0.5053\\ 0.5437\\ 0.582\\ 0.6203\\ 0.6584\\ 0.6965\\ 0.7346\\ 0.7726\\ 0.8105\\ 0.8485\\ 0.8864\\ 0.9243\\ 0.9621 \end{array}\right) $
@@ -468,7 +468,6 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
 \begin{enumerate}
     
 \vspace{0.9cm}
-\item 
 
 Se desea dibujar el contorno del dibujo de Snoopy:
 
@@ -480,73 +479,10 @@ Se desea dibujar el contorno del dibujo de Snoopy:
 \end{figure}
 
 
-Basado en esta figura se han obtenido los siguientes puntos:
 
 
-
-\begin{table}[H]
-    \centering
-        \begin{tabular} { |c|c|}
-        
-        \hline
-        xi  &  yi\\
-        \hline
-        2 &  5       \\
-         \hline
-        2.7 &  7.8        \\
-         \hline
-        3.8 &  9        \\
-         \hline
-        7 &  10        \\
-         \hline
-        8 &  10.2        \\
-         \hline
-        10 & 10.3        \\
-         \hline
-        13 & 10.4          \\
-         \hline
-        16 &  14.5        \\
-         \hline
-        18 &  15       \\
-         \hline
-        21 &  15.4        \\
-         \hline
-        25 &  15.5       \\
-         \hline
-        30 &  14       \\
-        \hline
-        36& 5   \\
-        \hline
-        \end{tabular}
-        \caption{Curva 1.}
-    \end{table}
- \vspace{1.8cm}
- 
- \begin{table}[H]
-    \centering
-        \begin{tabular} { |c|c|}
-        
-        \hline
-        xi  &  yi\\
-        \hline
-        2 &  5       \\
-         \hline
-        3 &  4        \\
-         \hline
-        7 &  7.9        \\
-         \hline
-        12 &  3.8        \\
-         \hline
-        22 &  4        \\
-         \hline
-        29 & 4.6        \\
-        \hline
-        \end{tabular}
-        \caption{Curva 2.}
-    \end{table}
- \begin{itemize}
 \item Utilizando la interpolación por Spline cubico, obtenga las dos curvas que aproximan el contorno del  Snoopy.
-\end{itemize}
+
 
 \begin{figure}[H]
     \centering
@@ -600,27 +536,7 @@ La función utilizada es:
 
   
  \chapter{Integración de funciones} 
-Corriente arriba de una presa, el agua ejerce una presión  $p(z) = pg(D − z)$  y ejercida a una elevación z metros por encima del fondo fluvial. Si se omite la presión atmosférica, la fuerza puede ser determinada al multiplicar la presión por el  área de la cara de la presa. Esta área se obtiene integrando la función w (z) que proporciona el ancho del rio a una altura z del lecho y toma valores según la figura:
 
- 
- \begin{figure}[H]
-    \centering
-    \includegraphics[width=9cm]{enunciado2}
-    \caption{Ancho del rio W, respecto a la altura z.} \label{fig:enunciado2}
-\end{figure}
-Debido a que la presión y el área varan con la elevación, la fuerza total se obtiene al calcular
- \begin{equation}
- f=\rho g\int_{0}^{D} w(z)*(D-z) \cdot dz
-\end{equation}
-Donde (2) y (3) son la densidad del agua y la aceleración de gravedad, respectivamente. Por ultimo, D=60 que indica la elevación en metros.
-\begin{equation}
- \rho=10^3[kg/m^3] 
-\end{equation}
- 
-\begin{equation}
-g=9.8[m/s^2]
-\end{equation}
-\\
  \begin{enumerate}
  \item Use la fórmula del trapecio compuesta (para 6 subintervalos) para calcular la fuerza total ejercida por el agua en la cara de la presa.
  \\ 
@@ -629,7 +545,6 @@ g=9.8[m/s^2]
  \\
  \\
  f=1.0854e+10
-\newpage
  resultó ser la siguiente imagen.
  \begin{figure}[H]
     \centering
