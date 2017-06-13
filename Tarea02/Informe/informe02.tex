@@ -19,6 +19,8 @@
 \listoffigures
 \chapter{Introducción}
 
+En el presente trabajo, el objetivo principal fue analizar algoritmos que permitieran resolver diversos problemas matemáticos, en el caso de resolución de sistemas de ecuaciones lineales se utilizaron algoritmos tales como eliminación Gaussiana, sustitución hacia atrás, factorización LU, factorización Cholesky y métodos iterativos tales como Jacobi, Gauss-Seidel y Relajación, para la aproximación e integración de funciones se utilizaron algoritmos de interpolación de Spline cúbico e  interpolación de Lagrange, en el caso de la integración de funciones se ocupó también el algoritmo del trapecio compuesto.
+
 \newpage
 
 \chapter{Resolución de sistema de ecuaciones lineales}
@@ -29,58 +31,65 @@
  		\begin{enumerate}
  			\item 	Usando la norma $|| · ||_{\infty}$ calcule el numero condición de la matriz H, para n = 5 hasta n = 30.
 Represente en una gráfica el resultado obtenido. Que puede decir de la matriz H.
+\begin{figure}[H]
+ 				\centering
+ 				\includegraphics[width=9cm]{Grafico1a.png}
+ 				\caption{Gráfico numero condición v/s $N$ }	
+ 			\end{figure}
  			
  			\item Sea $b_{i} = \sum_{j=1}^n a_{ij}$ para $i = 1...n$. Usando descomposición LU encuentre la solución $x_{a}$ del
 sistema $H_{x} = b$ cuando $n = 5, 10, 15, 20$.
  				\begin{itemize} 				
  				\item Para n=5:
  				
- 				$x_{a} = \left(\begin{array}{c} 1.0\\ 1.0\\ 1.0\\ 1.0\\ 1.0\\ 1.0\\ \end{array}\right)$
+ 				$x_{a} = \left(\begin{array}{c} 1.0000\\ 1.0000\\ 1.0000\\ 1.0000\\ 1.0000\end{array}\right)$
  				\\
  				\\
  				\item Para n=10:
  				
- 				$x_{a} = \left(\begin{array}{c} 1.0\\ 1.0\\ 1.0\\ 1.0\\ 1.0\\ 1.0\\ 0.9998\\ 1.0\\ 0.9999\\ 1.0 \end{array}\right)$
+ 				$x_{a} = \left(\begin{array}{c} 1.0000\\ 1.0000\\1.0000\\1.0000\\ 1.0000\\ 1.0001\\ 0.9998\\ 1.0002\\ 0.9999\\1.0000 \end{array}\right)$
  				\\
  				\\
  				\item Para n=15:
  				
- 				$x_{a} = \left(\begin{array}{c} 1.0\\ 1.0\\ 0.9992\\ 1.008\\ 0.9865\\ 0.6493\\ 4.094\\ -11.3\\ 28.09\\ -30.78\\ 14.27\\ 5.74\\ 8.759\\ -22.04\\ 9.068\\ 0.1336\\ 29.05\\ -42.82\\ 26.48\\ -4.379 \end{array}\right)$
+ 				$x_{a} = \left(\begin{array}{c} 1.0000\\ 1.0000\\ 0.9998\\ 1.0024\\ 0.9879\\1.0004\\ 1.3100\\ -0.7814\\  6.4136\\ -9.4048\\ 14.2587\\ -10.2060\\  7.0491\\  -0.8897\\  1.26008 \end{array}\right)$
  				\\
  				\\
- 				\newpage
+ 
  				\item Para n=20:
  				
- 				$x_{a} = \left(\begin{array}{c} 1.0\\ 1.0\\ 1.0\\ 0.9929\\ 1.055\\ 0.7579\\ 1.695\\ -0.8953\\ 7.118\\ -14.6\\ 22.59\\ -5.381\\ -19.13\\ 19.89\\ 11.04\\ -26.6\\ 29.17\\ -27.26\\ 32.59\\ -26.64\\ 8.374\\ -8.23\\ 29.33\\ 9.701\\ -39.71\\ -9.034\\ 39.38\\ 2.024\\ -19.37\\ 8.151 \end{array}\right)$
+ 				$x_{a} = \left(\begin{array}{c} 1.0000\\ 1.0000\\ 0.9992\\ 1.0082\\ 0.9865\\ 0.6493\\ 4.0935\\-11.3012\\ 28.0860\\  -30.7814\\14.2669\\  5.7401\\  8.7586\\-22.0413\\ 9.0679\\  0.1336\\ 29.0535\\ -42.8189\\  26.4788\\ - -4.3793\end{array}\right)$
  			\end{itemize}
  			\item Sea $x_{T} = (1, 1, . . . , 1)$ la solución exacta. Calcule las siguientes medidas $rfe = \frac{||x_{T}-x_{a}||_{\infty}}{||x_{T}||_{\infty}} , rbe = \frac{||b-Hx_{a}||_{\infty}}{||b||_{\infty}}$ y $\frac{rfe}{rbe}$ cuando n = 5, 10, 15, 20. Grafique ambos errores para cada n. Comente los
 resultados.
  			\begin{figure}[H]
  				\centering
- 				\includegraphics[width=9cm]{grafo1-rfe}
+ 				\includegraphics[width=9cm]{rfe.png}
  				\caption{Gráfico del error relativo $rfe$}	
  			\end{figure}
  			
  			\begin{figure}[H]
  				\centering
- 				\includegraphics[width=9cm]{grafo1-rbe}
+ 				\includegraphics[width=9cm]{rbe.png}
  				\caption{Gráfico del error relativo $rfb$}		
  			\end{figure}
  			
  			\begin{figure}[H]
  				\centering
- 				\includegraphics[width=9cm]{grafo1-div}
+ 				\includegraphics[width=9cm]{rferbe.png}
  				\caption{Gráfico de$\frac{rfe}{rbe}$}
 	
  			\end{figure}
  		
- 			En el primer gráfico se puede observar que para matrices de menor tamaño, el error es despreciable, pero a medida que el tamaño de la matriz aumenta también lo hace su error. Esto se produce debido al mal condicionamiento de la matriz de Hilbert.
+ 			
+ 			En lo gráficos se observa como va aumentando el error a  medida que va aumentando n, esto se debe a que la matriz de Hilbert esta mal condicionada, por que al menor cambio de uno de sus valores aumenta el error.
  		\end{enumerate}
  		
- 	Para resolver este problema se ocuparon los siguientes archivos: SolLU.m, FactorizacionLU.m, DiagUp.m y DiagDown.m	
+ 	
  	\newpage
  		\item
  	 \begin{enumerate}
+ 	 
  	    \item Programe los tres algoritmos
  	    \item  Grafique la solución obtenida por cada método. Compare con la solución original:
  	    \item Mencione en una tabla, la cantidad de iteraciones y el tiempo de ejecución, que usaron cada uno de los métodos para obtener la solución aproximada. Comente sus resultados.
@@ -95,21 +104,21 @@ resultados.
             \hline
             Valores de la solución para n=8 \\
             \hline
-            x_{1}=  0,42005\\
+            $x_{1}=  0.7526$\\
             \hline
-            x_{2}=  -1,86380\\
+            $x_{2}=   0.0000$\\
             \hline
-            x_{3}=  0,06716\\
+            $x_{3}=  -4.61664$\\
             \hline
-            x_{4}=  8,71470\\
+            $x_{4}=  0.0000$\\
             \hline
-            x_{5}=  -2,26160\\
+            $x_{5}=  9.0760$\\
             \hline
-            x_{6}=  -13,872\\
+            $x_{6}=   0.0000$\\
             \hline
-            x_{7}=  1,82990\\
+            $x_{7}=  -5.1736$\\
             \hline
-            x_{8}=  7,0035\\
+            $x_{8}=  0.0000$\\
             \hline
             \end{tabular}
         \end{table}
@@ -121,35 +130,35 @@ resultados.
             \hline
             Valores de la solución para n=15 \\
             \hline
-            x_{1}= 0,66216\\
+            $x_{1}= 0.0001e+04$\\
             \hline
-            x_{2}=  -3,2558\\
+            $x_{2}=  0.0000$\\
             \hline
-            x_{3}=  2,5351\\
+            $x_{3}=  -0.0021e+04$\\
             \hline
-            x_{4}=  51,084\\
+            $x_{4}=  0.0000$\\
             \hline
-            x_{5}=  -142,67\\
+            $x_{5}=  0.0278e+04$\\
             \hline
-            x_{6}=  -349,97\\
+            $x_{6}=  0.0000$\\
             \hline
-            x_{7}=  1267,5\\
+            $x_{7}=  -0.1871e+04$\\
             \hline
-            x_{8}=  1219,3\\
+            $x_{8}=   0.0000$\\
             \hline
-            x_{9}=  -4939\\
+            $x_{9}=  0.6582e+04$\\
             \hline
-            x_{10}= -2212,5\\
+            $x_{10}= 0.0000$\\
             \hline
-            x_{11}= 9501,1\\
+            $x_{11}= -1.2073e+04$\\
             \hline
-            x_{12}= 1972,1\\
+            $x_{12}= 0.0000$\\
             \hline
-            x_{13}= -8758,3\\
+            $x_{13}= 1.0850e+04$\\
             \hline
-            x_{14}= -676,7\\
+            $x_{14}= 0.0000$\\
             \hline
-            x_{15}= 3068,2\\
+            $x_{15}= -0.3745e+04$\\
             \hline
             \end{tabular}
         \end{table}
@@ -161,45 +170,45 @@ resultados.
             \hline
             Valores de la solución para n=20 \\
             \hline
-            x_{1}= 0,78893\\
+            $x_{1}= 0.0000$\\
             \hline
-            x_{2}=  -3,242\\
+            $x_{2}=  0.0000$\\
             \hline
-            x_{3}=  -4,634\\
+            $x_{3}=   -0.0002e+05$\\
             \hline
-            x_{4}=  78,394\\
+            $x_{4}=  0.0000$\\
             \hline
-            x_{5}=  -62,354\\
+            $x_{5}=  0.0033e+05$\\
             \hline
-            x_{6}=  -999,57\\
+            $x_{6}=  0.0000$\\
             \hline
-            x_{7}=  1236,5\\
+            $x_{7}=  0.0306e+05$\\
             \hline
-            x_{8}=  7758,6\\
+            $x_{8}=  0.0000$\\
             \hline
-            x_{9}=  -8888,8\\
+            $x_{9}=  0.1717e+05$\\
             \hline
-            x_{10}= -37882\\
+            $x_{10}= 0.0000$\\
             \hline
-            x_{11}= 34023\\
+            $x_{11}=  -0.5858e+05$\\
             \hline
-            x_{12}= 1,17E+05\\
+            $x_{12}= 0.0000$\\
             \hline
-            x_{13}= -74840\\
+            $x_{13}= 1.2102e+05$\\
             \hline
-            x_{14}= -2,25E+05\\
+            $x_{14}= 0.0000$\\
             \hline
-            x_{15}= 94271\\
+            $x_{15}= -1.4679e+05$\\
             \hline
-            x_{16}= 2,60E+05\\
+            $x_{16}= 0.0000$\\
             \hline
-            x_{17}= -62902\\
+            $x_{17}= 0.9560e+05$\\
             \hline
-            x_{18}= -1,64E+05\\
+            $x_{18}= 0.0000$\\
             \hline
-            x_{19}= 17167\\
+            $x_{19}= -0.2567e+05$\\
             \hline
-            x_{20}= 42838\\
+            $x_{20}= 0.0000$\\
             \hline
             \end{tabular}
         \end{table}
@@ -209,45 +218,45 @@ resultados.
   \hline
   \multicolumn{2}{|c|}{Valores de la solución para n=50 } \\
   \hline
-   x_{1}= 0,95399 & x_{26}= 1,16E+09\\
-x_{2}= -2,0286 & x_{27}= 1,10E+09\\
-x_{3}= -20,884 & x_{28}= -4,92E+08\\
-x_{4}= 80,9 & x_{29}= -1,05E+09\\
-x_{5}= 429,77 & x_{30}= 2,60E+08\\
-x_{6}= -1853,9 & x_{31}= 5,09E+08\\
-x_{7}= -7667,8 & x_{32}= -4,34E+08\\
-x_{8}= 27248 & x_{33}= -2,05E+08\\
-x_{9}= 1,04E+05 & x_{34}= 3,96E+08\\
-x_{10}= -2,85E+05 & x_{35}= 2,03E+08\\
-x_{11}= -1,09E+06 & x_{36}= -1,38E+08\\
-x_{12}= 2,08E+06 & x_{37}= -5,73E+07\\
-x_{13}= 8,92E+06 & x_{38}= 1,22E+08\\
-x_{14}= -8,88E+06 & x_{39}= -1,72E+08\\
-x_{15}= -5,28E+07 & x_{40}= -1,89E+08\\
-x_{16}= 1,16E+07 & x_{41}= 1,51E+08\\
-x_{17}= 2,09E+08 & x_{42}= 8,63E+06\\
-x_{18}= 7,42E+07 & x_{43}= 5,75E+06\\
-x_{19}= -5,27E+08 & x_{44}= 1,35E+08\\
-x_{20}= -4,32E+08 & x_{45}= -8,43E+07\\
-x_{21}= 7,91E+08 & x_{46}= -7,38E+07\\
-x_{22}= 1,07E+09 & x_{47}= 7,20E+07\\
-x_{23}= -5,20E+08 & x_{48}= 1,16E+07\\
-x_{24}= -1,48E+09 & x_{49}= -2,34E+07\\
-x_{25}= -3,58E+08 & $x_{50} = -2,30E+06$\\
+   $x_{1}=0.0000$ & $x_{26}= -0.8658e+09$\\
+$x_{2}= 0.0000$ & $x_{27}=  2.3850e+09$\\
+$x_{3}= 0.0000$ & $x_{28}= -0.1702e+09$\\
+$x_{4}= 0.0000$ & $x_{29}= -1.5634e+09$\\
+$x_{5}= 0.0000$ & $x_{30}= 0.1351e+09$\\
+$x_{6}= 0.0000$ & $x_{31}= 0.6060e+09$\\
+$x_{7}= -0.0001e+09$ & $x_{32}= 0.3682e+09$\\
+$x_{8}=  -0.0003e+09$ & $x_{33}= -0.0247e+09$\\
+$x_{9}= 0.0007e+09$ & $x_{34}=  -0.3568e+09$\\
+$x_{10}= 0.0040e+09$ & $x_{35}= 0.1459e+09$\\
+$x_{11}= 0.0001e+09$ & $x_{36}=  0.1836e+09$\\
+$x_{12}= -0.0263e+09$ & $x_{37}=  -0.1136e+09$\\
+$x_{13}= -0.0296e+09$ & $x_{38}= -0.0344e+09$\\
+$x_{14}=  0.0949e+09$ & $x_{39}= -0.0684e+09$\\
+$x_{15}=  0.1986e+09$ & $x_{40}= -0.0061e+09$\\
+$x_{16}=  -0.1868e+09$ & $x_{41}= 0.0185e+09$\\
+$x_{17}= -0.7121e+09$ & $x_{42}= -0.0967e+09$\\
+$x_{18}= 0.1293e+09$ & $x_{43}=  -0.0026e+09$\\
+$x_{19}= 1.6984e+09$ & $x_{44}= 0.0503e+09$\\
+$x_{20}= 0.3302e+09$ & $x_{45}= -0.0072e+09$\\
+$x_{21}=-2.9016e+09$ & $x_{46}= 0.0180e+09$\\
+$x_{22}= -1.1464e+09$ & $x_{47}= 0.0108e+09$\\
+$x_{23}=  3.5872e+09$ & $x_{48}= -0.0022e+09$\\
+$x_{24}= 1.5787e+09$ & $x_{49}= -0.0006e+09$\\
+$x_{25}=  -3.2413e+09$ & $x_{50} = -0.0005e+09$
+\\
 \hline
 \end{tabular}
 \newpage
 \item Grafique la función $f$ versus el polinomio $g$ para $n = 8, 15, 20, 50$. Comente sus resultados
     \begin{figure}[H]
     \centering
-    \subfloat[$n=8$]{{\includegraphics[width=9cm]{datos-8}}}
-    \subfloat[$n=15$]{{\includegraphics[width=9cm]{datos-15} }}
+    \subfloat[$n=8$]{{\includegraphics[width=9cm]{n8.png}}}
+    \subfloat[$n=15$]{{\includegraphics[width=9cm]{n15.png} }}
     \hfill
-    \subfloat[$n=20$]{{\includegraphics[width=9cm]{datos-20} }}
-    \subfloat[$n=50$]{{\includegraphics[width=9cm]{datos-50} }}
+    \subfloat[$n=20$]{{\includegraphics[width=9cm]{n20.png} }}
+    \subfloat[$n=50$]{{\includegraphics[width=9cm]{n40.png} }}
     \end{figure}
-     
-Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispara a valores muy altos cuando $t>0,5$
+    Para valores muy grandes de $n$ se observa como $g(ti)$ se va a alejando de la gráfica de $f(ti)$.
 
      \end{enumerate}
 
@@ -255,85 +264,218 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
  	\begin{enumerate}
  			\item Aplique los métodos iterativos: Jacobi, Gauss-Seidel y Relajación con $w = 0.7$ y $w = 1.3$, con punto inicial $x(0) = (0, . . . , 0)$ para encontrar la distribución inicial $s^0$, cuando $n = 10, n = 20$ y $n = 40$.
  			\begin{itemize}
- 				\item Al ocupar el método de Richardson, en ambos casos, la matriz definida por $I-M^5$ tiene un radio espectral mayor a 1. Siendo 1.0084 cuando $n=20$ y 1.0091 para $n=40$
- 				\item Lo mismo sucede con el método de Jacobi. Cuando $n = 20$, el radio espectral de la matriz definida por $I-Q^{-1}M^5$ tiene un valor de 3.8417, mientras que vale 3.8517 cuando  $n=40$.
- 				\item Al ocupar el método de Gauss-Seidel, se encuentre el mismo inconveniente. Con valores del radio espectral 1.0862 y 1.0945, respectivamente.
- 				\item Por último, cuando se uitliza el método de Relajación, nuevamente, se encuentra el mismo problema. Esta vez, los valores del radio espectral cuando $n=20$ son 1.0222, 1.0338 y 1.0382, para $w=0.7, 1.3,1.6$ respectivamente. Pr otra parte, cuando $n=40$, este vale 1.0242, 1.0369, 1.0432 para los respectivos valores de $w$
+ 				\item Al utilizar el método de Jacobi,el radio espectral para todos los $n$ nos arrojo un valor mayor a 1 por lo que no se pudo llegar a ninguna solución con este método.
+ 				\item En caso Del método de Gauss Seidel este divergió para los valores de $n = 20$ y $n = 40$, ya que nos arrojo un radio espectral de valor  1.000000000000001, pero en el caso de $n = 10$ converge ya que nos arroja un radio espectral de 0.999999999765406, por lo tanto la solución es:\\
+ 				
+ 				$s^{0} = \left(\begin{array}{c} 0.870774591784717\\ -1.287107307070359\\ 0.427396520772320\\ 0.357447273512588\\ -0.410646853699434\\ 0.128132826062855\\ 0.036089036182169\\ -0.056888992915167\\ 0.042348308511476\\-0.015216418759887
+ 				\end{array}\right)*10^4$
+ 				\\
+ 				\\
+ 				
+ 				\item Finalmente al aplicar el método de Relajacion, este diverge para los valores de $n= 20$ y $n = 40$, para ambos valores de $w$ ya que arroja un radio espectral de 1.000000000000002, en cambio para el valor de $n = 10$ converge ya que para ambos valores de $w$, $0.7$ y $1.3$, da un radio espectral de 0.999999999939976 y 0.999999999908685 respectivamente, por lo que las soluciones son:
+ 				\begin{itemize}
+ 				    \item para $ w = 0.7$\\
+ 				    $s^{0} = \left(\begin{array}{c} 3.222238945010367\\ -4.071280113608322\\ 0.335654485404636\\ 1.624918680817723\\ -0.573075696236457\\ -0.321910073468050\\ -0.014992075512375\\  0.209509521028656\\  0.085233972063552\\-0.105383007515083
+ 				\end{array}\right)*10^3$
+ 				\\
+ 				\\
+ 				\item para $ w = 1.3$\\
+ 				    $s^{0} = \left(\begin{array}{c} 4.411341632114369\\ -5.842040650271944\\ 0.922131164431082\\ 2.156010133600716\\ -1.175434495347176\\ -0.175757643009034\\  0.096574848279233\\  0.127729302443524\\  0.088953874115745\\-0.097355303679830
+ 				\end{array}\right)*10^3$
+ 				\\
+ 				\\
+ 				    
+ 				\end{itemize}
  			\end{itemize}
- 			\newpage
- 			\item Para cada método, mencione el criterio de parada y tolerancia, la convergencia (usando el radio espectral), la cantidad de iteraciones, el tiempo usado.\\
- 			Para todos los métodos se ocupó una tolerancia de 0.0001 y como criterio de parada se utilizó $\frac{\norm{x^{k+1}-x^{k}}_{2}}{\norm{x^{k+1}}_{2}}\leq 0.0001$. 
- 			Como ninguno de los métodos convergió, no se puede calcular la cantidad de iteraciones ni el tiempo utilizado.
+ 		\item Para cada método, mencione el criterio de parada y tolerancia, la convergencia (usando el radio espectral), la cantidad de iteraciones, el tiempo usado.\\
+ 			Para todos los métodos se ocupó una tolerancia de 0.00001 y como criterio de parada se utilizó $\frac{\norm{x^{k+1}-x^{k}}_{2}}{\norm{x^{k+1}}_{2}}\leq 0.00001$. \\
+ 			\begin{itemize}
+				\item Jacobi:
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{|c|c|c|c|}
+							\hline 
+							n & Iteraciones & Tiempo (s) & Convergencia  \\
+							\hline
+							10 & 0 & 0 & 4.463797819674746  \\
+							\hline
+							20 & 0 & 0 & 7.360445579609070 \\
+							\hline
+							40 & 0 & 0 & 11.429028652113038  \\
+							\hline
+						\end{tabular}
+					\end{table}
+				\item Gauss-Seidel:
+				 \begin{table}[H]
+						\centering
+						\begin{tabular}{|c|c|c|c|}
+							\hline 
+							n & Iteraciones & Tiempo & Convergencia  \\
+							\hline
+							10 & 85895 & 0.353124 & 0.999999999765406  \\
+							\hline
+							20 & 0 & 0 & 1.000000000000001  \\
+							\hline
+							40 & 0 & 0 &  1.000000000000001  \\
+							\hline
+						\end{tabular}
+					\end{table}
+				\item Relajación:
+					\begin{itemize}
+					\item $w=0.7$
+						\begin{table}[H]
+						\centering
+						\begin{tabular}{|c|c|c|c|c|}
+							\hline 
+							n & Iteraciones & Tiempo & Convergencia  \\
+							\hline
+							10 & 84278 & 0.360452 & 0.999999999939976  \\
+							\hline
+							20 & 0 & 0 & 1.000000000000000  \\
+							\hline
+							40 & 0 & 0 & 1.000000000000001 \\
+							\hline
+						\end{tabular}
+					\end{table}
+					\item $w=1.3$
+					\begin{table}[H]
+						\centering
+						\begin{tabular}{|c|c|c|c|c|}
+							\hline 
+							n & Iteraciones & Tiempo & Convergencia  \\
+							\hline
+							10 & 83804 & 0.329130 & 0.999999999908685 \\
+							\hline
+							20 & 0 & 0 & 1.000000000000002  \\
+							\hline
+							40 & 0 & 0 & 1.000000000000001  \\
+							\hline
+						\end{tabular}
+					\end{table}
+					\end{itemize}			
+			\end{itemize}
+ 			
+ 			
  			
 		\end{enumerate} 	  
 
-	\item
+	\item 
  		\begin{enumerate}
-			\item Comprobar que el vector $x_{e} = \frac{1}{n+1}(1, 2, . . . , n)$  es la única solución del sistema anterior.\\
-			Como la matriz de coeficientes no tiene filas nulas ni filas que sean multiplos de otras, se puede afirmar que el determinante siempre es distinto de 0. Esto nos demuestra que esta matriz tiene una solución única. Para demostrar que el vector $x_{e} = \frac{1}{n+1}(1,2,...,n)$ es solución del sistema, ocuparemos una matriz de $6 \times 6$ a modo de ejemplo.
-			\begin{equation}
-				\textrm{El sistema definido por} Ax = b
-				\textrm{ Donde } A = \left(\begin{array}{cccccc} 2.0 & -1.0 & 0 & 0 & 0 & 0\\ -1.0 & 2.0 & -1.0 & 0 & 0 & 0\\ 0 & -1.0 & 2.0 & -1.0 & 0 & 0\\ 0 & 0 & -1.0 & 2.0 & -1.0 & 0\\ 0 & 0 & 0 & -1.0 & 2.0 & -1.0\\ 0 & 0 & 0 & 0 & -1.0 & 2.0 \end{array}\right)
-				\textrm{ y } x_{e} = \left(\begin{array}{c} 0.1667\\ 0.3333\\ 0.5\\ 0.6667\\ 0.8333\\ 1.0 \end{array}\right)
-			\end{equation}			 
+			\item Comprobar que el vector $x_{e} = \frac{1}{n+1}(1, 2, . . . , n)$  es la única solución del sistema anterior.\\\par 
+			Se busco la solucion del sistema utilizando el metodo de Gauss-Jordan, escalonando la matriz.
 			
-			Luego 
-			\begin{equation}
-				b = Ax_{e}
-			\end{equation}
-			
-			Entonces el vector b tiene un valor de $\left(\begin{array}{c} 0\\ 0\\ 1.11\cdot 10^{-16}\\ 0\\ -1.11\cdot 10^{-16}\\ 1.167 \end{array}\right)$
-			Luego si calculamos el error relativo entre este vector $b$ y el vector $b$ real, definido por $\frac{\norm{b_{e}-b}}{\norm{b_{e}}}$ donde $b_{e}$ sería este último, obtenemos un valor de 0.1667. 
-			
-			Por lo tanto, se concluye que el vector $x_{e} = \frac{1}{n+1}$
+			%\begin{equation}
+				\left[ \begin{array}{cccccc}
+                1  & \frac{-1}{2}    & 0      &        &        &\\
+                0 &  \frac{3}{2}    & -1     &        &        &\\
+                0  &  -1   & 2      & -1     &        &     \\
+                &\ddots & \ddots & \ddots & \ddots & \\
+                &       &        & -1     & 2      & -1 \\
+                &       &        &      & -1      & 2 \\
+                
+                \end{array}\right|  \left{ \begin{array}{c}
+                0\\
+                0\\
+                0\\
+                0\\
+                \vdots \\
+                1\\
+                \end{array}\right] \rightarrow 
+                \left[ \begin{array}{cccccc}
+                1  & \frac{-1}{2}    & 0      &        &        &\\
+                0  &  1    & \frac{-2}{3}    &        &        &\\
+                0  &  0    & 1      & \frac{-3}{4}   &        &     \\
+                &\ddots & \ddots & \ddots & \ddots & \\
+                &       &        & -1     & 2      & -1 \\
+                &       &        &      & -1      & 2 \\
+                \end{array}\right| \left{ \begin{array}{c}
+                0\\
+                0\\
+                0\\
+                0\\
+                \vdots\\
+                1\\
+                \end{array}\right] \rightarrow
+                
+                \left[ \begin{array}{cccccc}
+                1  & \frac{-1}{2}  & 0             &              &        &\\
+                0  &  1            & \frac{-2}{3}  &              &        &\\
+                0  &  0            & 1             & \frac{-3}{4} &        & \\
+                &\ddots         & \ddots        & \ddots       & \ddots & \\
+                &               &               & 0            & 1     & \frac{-n}{n+1} \\
+                 &       &        &      & 0     & \frac{n}{n+1} \\
+                \end{array}\right| \left{ \begin{array}{c}
+                0\\
+                0\\
+                0\\
+                0\\
+                \vdots\\
+                1\\
+                \end{array}\right] \rightarrow
+                \next
+                \left[ \begin{array}{cccccc}
+                1  & 0     & 0      &        &        &\\
+                0  &  1    & 0      &        &        &\\
+                0  &  0    & 1      & 0      &        &     \\
+                &\ddots & \ddots & \ddots & \ddots & \\
+                &       &        & 0      & 1      & 0 \\
+                &       &        &      & 0      & 1 \\
+                \end{array}\right| \left{ \begin{array}{c}
+                \frac{1}{5}\\
+                \frac{2}{5}\\
+                \frac{3}{5}\\
+                \vdots \\
+                \frac{n-1}{n+1} \\
+                \frac{n}{n+1}\\
+                \end{array} \right]
+                \par
+                
+			%\end{equation}			 
+		 
+			Por lo tanto, se concluye que la solucion desl sistema anterios  $x_{e} = \frac{1}{n+1}(1,2,3,...,n)$\par
 			
 			\item Usando la forma implementable de los métodos iterativos (Jacobi, Gauss-Seidel y Relajación con $w = 0.5, w = 1.6$) y la punto inicial $x^0 = (1, . . . , 1)$, encuentre la solución del sistema lineal cuando $n = 25, n = 50 $ y $ n = 60$.	
 			\begin{itemize}
-				\item Cuando se ocupa el método de Richardson, este no converge para ninguno de los tres casos, ya que los valores del radio espectral de la matriz definida por $I-A$ son mayores a 1. Teniendo valores de 2.9854, 2.9962, 2.9973 para $n=25, n=50$ y $n=60$ respectivamente.
 				
-				\item Al ocupar el método de Jacobi con una tolerancia de 0.0001, se obtienen los siguientes valores para:
+				\item Al ocupar el método de Jacobi con una tolerancia de 0.000001, se obtienen los siguientes valores para:
 				
 					 n = 25: 
-					$x_{a} = \left(\begin{array}{c} 0.03939\\ 0.07875\\ 0.1181\\ 0.1574\\ 0.1967\\ 0.2358\\ 0.275\\ 0.314\\ 0.353\\ 0.3917\\ 0.4305\\ 0.4691\\ 0.5077\\ 0.546\\ 0.5844\\ 0.6225\\ 0.6606\\ 0.6986\\ 0.7365\\ 0.7743\\ 0.8121\\ 0.8497\\ 0.8873\\ 0.9249\\ 0.9625 \end{array}\right) $	
+					$x_{a} = \left(\begin{array}{c} 0.0385\\ 0.0769\\ 0.1154\\ 0.1539\\ 0.1924\\ 0.2308\\ 0.2693\\ 0.3078\\ 0.3464\\ 0.3847\\ 0.4232\\ 0.4616\\ 0.5001\\ 0.5385\\ 0.5770\\ 0.6155\\ 0.6539\\ 0.6924\\ 0.7308\\ 0.7693\\ 0.8077\\ 0.8464\\ 0.8846\\ 0.9231\\ 0.9615 \end{array}\right) $	
 					 n = 50:
-					$x_{a} = \left(\begin{array}{c} 0.0215\\ 0.04301\\ 0.06448\\ 0.08595\\ 0.1074\\ 0.1288\\ 0.1501\\ 0.1715\\ 0.1927\\ 0.2139\\ 0.235\\ 0.2561\\ 0.277\\ 0.2979\\ 0.3187\\ 0.3394\\ 0.36\\ 0.3805\\ 0.4009\\ 0.4212\\ 0.4414\\ 0.4615\\ 0.4814\\ 0.5013\\ 0.521\\ 0.5406\\ 0.5601\\ 0.5795\\ 0.5987\\ 0.6179\\ 0.6369\\ 0.6558\\ 0.6746\\ 0.6934\\ 0.7119\\ 0.7305\\ 0.7489\\ 0.7672\\ 0.7854\\ 0.8036\\ 0.8217\\ 0.8398\\ 0.8577\\ 0.8756\\ 0.8935\\ 0.9113\\ 0.9291\\ 0.9468\\ 0.9646\\ 0.9823 \end{array}\right)$
+					$x_{a} = \left(\begin{array}{c} 0.0196\\ 0.0393\\ 0.0589\\ 0.0785\\ 0.0981\\ 0.1178\\ 0.1374\\ 0.1570\\ 0.1766\\ 0.1963\\ 0.2159\\ 0.2355\\ 0.2551\\ 0.2747\\ 0.2944\\ 0.3140\\ 0.3336\\ 0.3532\\ 0.3728\\ 0.3924\\ 0.4121\\ 0.4317\\ 0.4513\\ 0.4709\\ 0.4905\\ 0.5101\\ 0.5297\\ 0.5493\\ 0.5689\\ 0.5885\\ 0.6081\\ 0.6277\\ 0.6473\\ 0.6669\\ 0.6865\\ 0.7061\\ 0.7257\\ 0.7453\\ 0.7649\\ 0.7845\\ 0.8041\\ 0.8237\\ 0.8433\\ 0.8629\\ 0.8825\\ 0.9021\\ 0.9216\\ 0.9412\\ 0.9608\\ 0.9804 \end{array}\right)$
 										
 					 n = 60:	
-					$x_{a} = \left(\begin{array}{c} 0.0187\\ 0.03739\\ 0.05608\\ 0.07474\\ 0.09339\\ 0.112\\ 0.1306\\ 0.1491\\ 0.1676\\ 0.186\\ 0.2044\\ 0.2227\\ 0.2409\\ 0.2591\\ 0.2772\\ 0.2952\\ 0.3131\\ 0.3309\\ 0.3487\\ 0.3663\\ 0.3838\\ 0.4012\\ 0.4186\\ 0.4357\\ 0.4529\\ 0.4698\\ 0.4867\\ 0.5034\\ 0.5201\\ 0.5366\\ 0.553\\ 0.5692\\ 0.5854\\ 0.6014\\ 0.6174\\ 0.6332\\ 0.6489\\ 0.6644\\ 0.6799\\ 0.6953\\ 0.7106\\ 0.7257\\ 0.7408\\ 0.7557\\ 0.7706\\ 0.7853\\ 0.8001\\ 0.8147\\ 0.8293\\ 0.8437\\ 0.8581\\ 0.8725\\ 0.8868\\ 0.901\\ 0.9153\\ 0.9294\\ 0.9436\\ 0.9577\\ 0.9718\\ 0.9859 \end{array}\right)$
+					$x_{a} = \left(\begin{array}{c} 0.0164\\ 0.0328\\ 0.0492\\ 0.0657\\ 0.0821\\ 0.0985\\ 0.1149\\ 0.1313\\ 0.1477\\ 0.1641\\ 0.1806\\ 0.1970\\ 0.2134\\ 0.2298\\ 0.2462\\ 0.2626\\ 0.2790\\ 0.2954\\ 0.3118\\ 0.3282\\ 0.3446\\ 0.3610\\ 0.3774\\ 0.3938\\ 0.4102\\ 0.4266\\ 0.4430\\ 0.4594\\ 0.4758\\ 0.4922\\ 0.5086\\ 0.5250\\ 0.5414\\ 0.5578\\ 0.5742\\ 0.5906\\ 0.6070\\ 0.6233\\ 0.6397\\ 0.6561\\ 0.6725\\ 0.6889\\ 0.7053\\ 0.7216\\ 0.7380\\ 0.7544\\ 0.7708\\ 0.7872\\ 0.8035\\ 0.8199\\ 0.8363\\ 0.8527\\ 0.8690\\ 0.8854\\ 0.9018\\ 0.9181\\ 0.9345\\ 0.9509\\ 0.9673\\ 0.9836 \end{array}\right)$
 			
-				\item Cuando se utiliza el método de Gauss-Seidel con la misma tolerancia, los resultados son los siguientes:
+				\item Al utiliza el método de Gauss-Seidel con la misma tolerancia, se obtienen los siguientes resultados:
 				
 				n = 25:
-				$x_{a} = \left(\begin{array}{c} 0.03939\\ 0.07875\\ 0.1181\\ 0.1574\\ 0.1967\\ 0.2358\\ 0.275\\ 0.314\\ 0.353\\ 0.3917\\ 0.4305\\ 0.4691\\ 0.5077\\ 0.546\\ 0.5844\\ 0.6225\\ 0.6606\\ 0.6986\\ 0.7365\\ 0.7743\\ 0.8121\\ 0.8497\\ 0.8873\\ 0.9249\\ 0.9625 \end{array}\right)$
+				$x_{a} = \left(\begin{array}{c} 0.0385\\ 0.0769\\ 0.1153\\ 0.1539\\ 0.1923\\ 0.2308\\ 0.2693\\ 0.3077\\ 0.3462\\ 0.3847\\ 0.4231\\ 0.4616\\ 0.5001\\ 0.5385\\ 0.5770\\ 0.6154\\ 0.6539\\ 0.6923\\ 0.7308\\ 0.7693\\ 0.8077\\ 0.8462\\ 0.8846\\ 0.9231\\ 0.9615 \end{array}\right)$
 				n = 50:
-				$x_{a} = \left(\begin{array}{c} 0.021\\ 0.04198\\ 0.06295\\ 0.0839\\ 0.1048\\ 0.1257\\ 0.1466\\ 0.1674\\ 0.1882\\ 0.2089\\ 0.2296\\ 0.2502\\ 0.2707\\ 0.2912\\ 0.3116\\ 0.332\\ 0.3523\\ 0.3725\\ 0.3926\\ 0.4127\\ 0.4326\\ 0.4525\\ 0.4723\\ 0.4921\\ 0.5117\\ 0.5313\\ 0.5508\\ 0.5702\\ 0.5895\\ 0.6088\\ 0.6279\\ 0.647\\ 0.6661\\ 0.685\\ 0.7039\\ 0.7227\\ 0.7415\\ 0.7602\\ 0.7788\\ 0.7974\\ 0.816\\ 0.8345\\ 0.853\\ 0.8714\\ 0.8898\\ 0.9082\\ 0.9266\\ 0.945\\ 0.9633\\ 0.9817 \end{array}\right)$
+				$x_{a} = \left(\begin{array}{c} 0.0196\\ 0.0392\\ 0.0589\\ 0.0785\\ 0.0981\\ 0.1177\\ 0.1373\\ 0.1570\\ 0.1766\\ 0.1962\\ 0.2158\\ 0.2354\\ 0.2551\\ 0.2747\\ 0.2943\\ 0.3139\\ 0.3335\\ 0.3531\\ 0.3727\\ 0.3924\\ 0.4120\\ 0.4316\\ 0.4512\\ 0.4708\\ 0.4904\\ 0.5100\\ 0.5296\\ 0.5492\\ 0.5688\\ 0.5884\\ 0.6080\\ 0.6276\\ 0.6472\\ 0.6668\\ 0.6864\\ 0.7060\\ 0.7256\\ 0.7452\\ 0.7648\\ 0.7844\\ 0.8040\\ 0.8236\\ 0.8432\\ 0.8628\\ 0.8824\\ 0.9020\\ 0.9216\\ 0.9412\\ 0.9608\\ 0.9804 \end{array}\right)$
 				
 				
 				n = 60:
-				$x_{a} = \left(\begin{array}{c} 0.0187\\ 0.03739\\ 0.05608\\ 0.07474\\ 0.09339\\ 0.112\\ 0.1306\\ 0.1491\\ 0.1676\\ 0.186\\ 0.2044\\ 0.2227\\ 0.2409\\ 0.2591\\ 0.2772\\ 0.2952\\ 0.3131\\ 0.3309\\ 0.3487\\ 0.3663\\ 0.3838\\ 0.4012\\ 0.4186\\ 0.4357\\ 0.4529\\ 0.4698\\ 0.4867\\ 0.5034\\ 0.5201\\ 0.5366\\ 0.553\\ 0.5692\\ 0.5854\\ 0.6014\\ 0.6174\\ 0.6332\\ 0.6489\\ 0.6644\\ 0.6799\\ 0.6953\\ 0.7106\\ 0.7257\\ 0.7408\\ 0.7557\\ 0.7706\\ 0.7853\\ 0.8001\\ 0.8147\\ 0.8293\\ 0.8437\\ 0.8581\\ 0.8725\\ 0.8868\\ 0.901\\ 0.9153\\ 0.9294\\ 0.9436\\ 0.9577\\ 0.9718\\ 0.9859 \end{array}\right)$
-				\item Finalmente,al utilizar el método de Relajación, se se encuentran las siguientes soluciones, dependiendo del valor de $w$:
+				$x_{a} = \left(\begin{array}{c} 0.0164\\ 0.0328\\ 0.0492\\ 0.0656\\ 0.0820\\ 0.0985\\ 0.1149\\ 0.1313\\ 0.1477\\ 0.1641\\ 0.1805\\ 0.1969\\ 0.2133\\ 0.2297\\ 0.2461\\ 0.2625\\ 0.2789\\ 0.2953\\ 0.3117\\ 0.3281\\ 0.3445\\ 0.3609\\ 0.3773\\ 0.3937\\ 0.4101\\ 0.4265\\ 0.4429\\ 0.4593\\ 0.4757\\ 0.4921\\ 0.5085\\ 0.5249\\ 0.5413\\ 0.5577\\ 0.5741\\ 0.5905\\ 0.6068\\ 0.6232\\ 0.6396\\ 0.6560\\ 0.6724\\ 0.6888\\ 0.7052\\ 0.7215\\ 0.7379\\ 0.7543\\ 0.7707\\ 0.7871\\ 0.8035\\ 0.8198\\ 0.8362\\ 0.8526\\ 0.8690\\ 0.8853\\ 0.9017\\ 0.9181\\ 0.9345\\ 0.9509\\ 0.9672\\ 0.9836 \end{array}\right)$
+				\item Al utilizar el método de Relajación, se encuentran las siguientes soluciones, dependiendo del valor de $w$:
 				\begin{itemize}
 				\item $w = 0.5$:
-				n = 25: $x_{a} = \left(\begin{array}{c} 0.04188\\ 0.08371\\ 0.1254\\ 0.167\\ 0.2083\\ 0.2495\\ 0.2903\\ 0.3308\\ 0.371\\ 0.4108\\ 0.4502\\ 0.4893\\ 0.5279\\ 0.5661\\ 0.6039\\ 0.6413\\ 0.6784\\ 0.7151\\ 0.7515\\ 0.7875\\ 0.8233\\ 0.8589\\ 0.8944\\ 0.9296\\ 0.9648 \end{array}\right)$ 
-				n = 50: $x_{a} = \left(\begin{array}{c} 0.02703\\ 0.05402\\ 0.08095\\ 0.1078\\ 0.1345\\ 0.1611\\ 0.1875\\ 0.2137\\ 0.2397\\ 0.2654\\ 0.2908\\ 0.316\\ 0.3409\\ 0.3654\\ 0.3895\\ 0.4133\\ 0.4367\\ 0.4597\\ 0.4823\\ 0.5045\\ 0.5263\\ 0.5476\\ 0.5684\\ 0.5888\\ 0.6088\\ 0.6283\\ 0.6474\\ 0.666\\ 0.6842\\ 0.7019\\ 0.7192\\ 0.7361\\ 0.7526\\ 0.7687\\ 0.7845\\ 0.7998\\ 0.8148\\ 0.8295\\ 0.8438\\ 0.8579\\ 0.8717\\ 0.8852\\ 0.8986\\ 0.9117\\ 0.9246\\ 0.9374\\ 0.9501\\ 0.9627\\ 0.9751\\ 0.9876 \end{array}\right)$	
+				n = 25: $x_{a} = \left(\begin{array}{c} 0.0385\\ 0.0770\\ 0.1155\\ 0.1540\\ 0.1925\\ 0.2310\\ 0.2694\\ 0.3079\\ 0.3464\\ 0.3849\\ 0.4233\\ 0.4618\\ 0.5003\\ 0.5387\\ 0.5772\\ 0.6156\\ 0.6541\\ 0.6925\\ 0.7310\\ 0.7694\\ 0.8078\\ 0.8463\\ 0.8847\\ 0.9231\\ 0.9616 \end{array}\right)$
 				
-				n = 60: $x_{a} = \left(\begin{array}{c} 0.02591\\ 0.0518\\ 0.07762\\ 0.1034\\ 0.129\\ 0.1545\\ 0.1798\\ 0.2049\\ 0.2299\\ 0.2545\\ 0.279\\ 0.3031\\ 0.327\\ 0.3505\\ 0.3737\\ 0.3965\\ 0.4189\\ 0.441\\ 0.4627\\ 0.4839\\ 0.5047\\ 0.5251\\ 0.545\\ 0.5644\\ 0.5834\\ 0.6019\\ 0.62\\ 0.6376\\ 0.6546\\ 0.6713\\ 0.6874\\ 0.7031\\ 0.7183\\ 0.733\\ 0.7473\\ 0.7611\\ 0.7745\\ 0.7874\\ 0.7999\\ 0.812\\ 0.8237\\ 0.8351\\ 0.846\\ 0.8566\\ 0.8669\\ 0.8768\\ 0.8864\\ 0.8958\\ 0.9049\\ 0.9137\\ 0.9223\\ 0.9306\\ 0.9388\\ 0.9468\\ 0.9547\\ 0.9624\\ 0.9701\\ 0.9776\\ 0.9851\\ 0.9926 \end{array}\right)$	
+				n = 50: $x_{a} = \left(\begin{array}{c} 0.0197\\ 0.0393\\ 0.0590\\ 0.0787\\ 0.0984\\ 0.1180\\ 0.1377\\ 0.1574\\ 0.1770\\ 0.1967\\ 0.2164\\ 0.2360\\ 0.2557\\ 0.2753\\ 0.2950\\ 0.3146\\ 0.3343\\ 0.3539\\ 0.3735\\ 0.3932\\ 0.4128\\ 0.4324\\ 0.4520\\ 0.4716\\ 0.4913\\ 0.5109\\ 0.5305\\ 0.5501\\ 0.5697\\ 0.5893\\ 0.6088\\ 0.6284\\ 0.6480\\ 0.6676\\ 0.6872\\ 0.7067\\ 0.7263\\ 0.7459\\ 0.7654\\ 0.7850\\ 0.8045\\ 0.8241\\ 0.8436\\ 0.8632\\ 0.8827\\ 0.9023\\ 0.9218\\ 0.9414\\ 0.9609\\ 0.9805 \end{array}\right)$
 				
-				\item $w = 1.2$:
-				n = 25: $x_{a} = \left(\begin{array}{c} 0.04028\\ 0.08052\\ 0.1207\\ 0.1608\\ 0.2008\\ 0.2406\\ 0.2803\\ 0.3199\\ 0.3592\\ 0.3984\\ 0.4373\\ 0.4761\\ 0.5146\\ 0.5529\\ 0.591\\ 0.6289\\ 0.6666\\ 0.7042\\ 0.7415\\ 0.7787\\ 0.8158\\ 0.8528\\ 0.8896\\ 0.9265\\ 0.9632 \end{array}\right)$
-				n = 50: $x_{a} = \left(\begin{array}{c} 0.02336\\ 0.0467\\ 0.07\\ 0.09326\\ 0.1165\\ 0.1396\\ 0.1626\\ 0.1855\\ 0.2083\\ 0.231\\ 0.2536\\ 0.276\\ 0.2982\\ 0.3203\\ 0.3422\\ 0.3639\\ 0.3855\\ 0.4068\\ 0.4279\\ 0.4488\\ 0.4695\\ 0.49\\ 0.5102\\ 0.5302\\ 0.55\\ 0.5696\\ 0.5889\\ 0.608\\ 0.6269\\ 0.6456\\ 0.664\\ 0.6823\\ 0.7003\\ 0.7181\\ 0.7358\\ 0.7532\\ 0.7705\\ 0.7876\\ 0.8046\\ 0.8214\\ 0.8381\\ 0.8546\\ 0.8711\\ 0.8874\\ 0.9036\\ 0.9198\\ 0.9359\\ 0.952\\ 0.968\\ 0.984 \end{array}\right)$
+				n = 60: $x_{a} = \left(\begin{array}{c} 0.0165\\ 0.0329\\ 0.0494\\ 0.0659\\ 0.0824\\ 0.0988\\ 0.1153\\ 0.1318\\ 0.1482\\ 0.1647\\ 0.1811\\ 0.1976\\ 0.2141\\ 0.2305\\ 0.2470\\ 0.2634\\ 0.2799\\ 0.2963\\ 0.3127\\ 0.3292\\ 0.3456\\ 0.3620\\ 0.3785\\ 0.3949\\ 0.4113\\ 0.4277\\ 0.4441\\ 0.4605\\ 0.4769\\ 0.4933\\ 0.5097\\ 0.5261\\ 0.5425\\ 0.5589\\ 0.5752\\ 0.5916\\ 0.6080\\ 0.6244\\ 0.6407\\ 0.6571\\ 0.6734\\ 0.6898\\ 0.7061\\ 0.7225\\ 0.7388\\ 0.7552\\ 0.7715\\ 0.7878\\ 0.8042\\ 0.8205\\ 0.8368\\ 0.8531\\ 0.8695\\ 0.8858\\ 0.9021\\ 0.9184\\ 0.9347\\ 0.9511\\ 0.9674\\ 0.9837 \end{array}\right)$
 				
-				n = 60: $x_{a} = \left(\begin{array}{c} 0.02101\\ 0.04201\\ 0.06297\\ 0.0839\\ 0.1048\\ 0.1256\\ 0.1463\\ 0.1669\\ 0.1875\\ 0.2079\\ 0.2282\\ 0.2484\\ 0.2684\\ 0.2883\\ 0.308\\ 0.3276\\ 0.347\\ 0.3662\\ 0.3852\\ 0.404\\ 0.4225\\ 0.4409\\ 0.4591\\ 0.4771\\ 0.4948\\ 0.5123\\ 0.5295\\ 0.5466\\ 0.5634\\ 0.58\\ 0.5963\\ 0.6124\\ 0.6283\\ 0.6439\\ 0.6593\\ 0.6745\\ 0.6895\\ 0.7042\\ 0.7188\\ 0.7331\\ 0.7472\\ 0.7611\\ 0.7749\\ 0.7884\\ 0.8018\\ 0.815\\ 0.8281\\ 0.841\\ 0.8538\\ 0.8664\\ 0.879\\ 0.8914\\ 0.9037\\ 0.9159\\ 0.9281\\ 0.9401\\ 0.9522\\ 0.9642\\ 0.9761\\ 0.9881 \end{array}\right)$
+				\item $w = 1.6$:	
+				n = 25: $x_{a} = \left(\begin{array}{c} 0.0385\\ 0.0770\\ 0.1154\\ 0.1539\\ 0.1924\\ 0.2309\\ 0.2693\\ 0.3078\\ 0.3463\\ 0.3847\\ 0.4232\\ 0.4617\\ 0.5001\\ 0.5386\\ 0.5770\\ 0.6155\\ 0.6540\\ 0.6924\\ 0.7309\\ 0.7693\\ 0.8078\\ 0.8462\\ 0.8847\\ 0.9231\\ 0.9616 \end{array}\right)$
 				
-				\item $w = 1.65$:	
-				n = 25: $x_{a} = \left(\begin{array}{c} 0.03998\\ 0.07992\\ 0.1198\\ 0.1596\\ 0.1993\\ 0.239\\ 0.2784\\ 0.3178\\ 0.357\\ 0.396\\ 0.4349\\ 0.4736\\ 0.5121\\ 0.5504\\ 0.5886\\ 0.6266\\ 0.6644\\ 0.7021\\ 0.7396\\ 0.7771\\ 0.8144\\ 0.8516\\ 0.8888\\ 0.9259\\ 0.9629 \end{array}\right)$
-				n = 50: $x_{a} = \left(\begin{array}{c} 0.02269\\ 0.04537\\ 0.06802\\ 0.09063\\ 0.1132\\ 0.1357\\ 0.1581\\ 0.1804\\ 0.2027\\ 0.2248\\ 0.2468\\ 0.2687\\ 0.2905\\ 0.3122\\ 0.3336\\ 0.355\\ 0.3761\\ 0.3972\\ 0.418\\ 0.4387\\ 0.4591\\ 0.4795\\ 0.4996\\ 0.5195\\ 0.5393\\ 0.5588\\ 0.5782\\ 0.5974\\ 0.6164\\ 0.6352\\ 0.6539\\ 0.6724\\ 0.6907\\ 0.7088\\ 0.7268\\ 0.7447\\ 0.7624\\ 0.7799\\ 0.7974\\ 0.8147\\ 0.8319\\ 0.849\\ 0.866\\ 0.8829\\ 0.8998\\ 0.9166\\ 0.9333\\ 0.95\\ 0.9667\\ 0.9833 \end{array}\right)$
+				n = 50: $x_{a} = \left(\begin{array}{c} 0.0196\\ 0.0393\\ 0.0589\\ 0.0785\\ 0.0982\\ 0.1178\\ 0.1375\\ 0.1571\\ 0.1767\\ 0.1964\\ 0.2160\\ 0.2356\\ 0.2552\\ 0.2749\\ 0.2945\\ 0.3141\\ 0.3337\\ 0.3534\\ 0.3730\\ 0.3926\\ 0.4122\\ 0.4318\\ 0.4515\\ 0.4711\\ 0.4907\\ 0.5103\\ 0.5299\\ 0.5495\\ 0.5691\\ 0.5887\\ 0.6083\\ 0.6279\\ 0.6475\\ 0.6671\\ 0.6867\\ 0.7063\\ 0.7258\\ 0.7454\\ 0.7650\\ 0.7846\\ 0.8042\\ 0.8238\\ 0.8434\\ 0.8629\\ 0.8825\\ 0.9021\\ 0.9217\\ 0.9413\\ 0.9608\\ 0.9804 \end{array}\right)$
 				
-				n = 60: $x_{a} =\left(\begin{array}{c} 0.02017\\ 0.04033\\ 0.06046\\ 0.08056\\ 0.1006\\ 0.1206\\ 0.1406\\ 0.1604\\ 0.1802\\ 0.1999\\ 0.2195\\ 0.239\\ 0.2583\\ 0.2776\\ 0.2967\\ 0.3157\\ 0.3345\\ 0.3532\\ 0.3717\\ 0.39\\ 0.4082\\ 0.4262\\ 0.4441\\ 0.4617\\ 0.4792\\ 0.4965\\ 0.5136\\ 0.5305\\ 0.5473\\ 0.5638\\ 0.5802\\ 0.5963\\ 0.6123\\ 0.628\\ 0.6436\\ 0.659\\ 0.6743\\ 0.6893\\ 0.7042\\ 0.7189\\ 0.7334\\ 0.7478\\ 0.762\\ 0.7761\\ 0.79\\ 0.8038\\ 0.8175\\ 0.8311\\ 0.8445\\ 0.8578\\ 0.8711\\ 0.8842\\ 0.8973\\ 0.9103\\ 0.9232\\ 0.9361\\ 0.9489\\ 0.9617\\ 0.9745\\ 0.9872 \end{array}\right)$
+				n = 60: $x_{a} =\left(\begin{array}{c} 0.0164\\ 0.0329\\ 0.0493\\ 0.0657\\ 0.0821\\ 0.0986\\ 0.1150\\ 0.1314\\ 0.1479\\ 0.1643\\ 0.1807\\ 0.1971\\ 0.2135\\ 0.2300\\ 0.2464\\ 0.2628\\ 0.2792\\ 0.2956\\ 0.3120\\ 0.3285\\ 0.3449\\ 0.3613\\ 0.3777\\ 0.3941\\ 0.4105\\ 0.4269\\ 0.4433\\ 0.4597\\ 0.4761\\ 0.5089\\ 0.5253\\ 0.5417\\ 0.5580\\ 0.5744\\ 0.5908\\ 0.6072\\ 0.6236\\ 0.6400\\ 0.6563\\ 0.6727\\ 0.6891\\ 0.7055\\ 0.7218\\ 0.7382\\ 0.7546\\ 0.7709\\ 0.7873\\ 0.8037\\ 0.8200\\ 0.8364\\ 0.8528\\ 0.8691\\ 0.8855\\ 0.9018\\ 0.9182\\ 0.9346\\ 0.9509\\ 0.9673\\ 0.9836\\ 0.9872 \end{array}\right)$
 				\end{itemize}
 			\end{itemize}
 			\item Para cada metodo, mencione el criterio de parada y tolerancia, la convergencia (usando el radio espectral), la cantidad de iteraciones, el tiempo usado. Calcule $\frac{||x_{e}-x_{a}||_{\infty}}{||x_{e}||_{\infty}}$. Comente sus resultados.\\
-			Para todos los métodos se ocupó una tolerancia de 0.0001 y como criterio de parada se utilizó $\frac{\norm{x^{k+1}-x^{k}}_{2}}{\norm{x^{k+1}}_{2}}\leq 0.0001$. 
+			Para todos los métodos se ocupó una tolerancia de 0.000001 y como criterio de parada se utilizó $\frac{\norm{x^{k+1}-x^{k}}_{2}}{\norm{x^{k+1}}_{2}}\leq 0.000001$. 
 			\begin{itemize}
 				\item Jacobi:
 					\begin{table}[H]
@@ -342,11 +484,11 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
 							\hline 
 							n & Iteraciones & Tiempo (s) & Convergencia & Error \\
 							\hline
-							25 & 603 &0.2313 & 0.9927 & 0.0080 \\
+							25 & 1233 &0.66861 & 0.9927 & 0.0080 \\
 							\hline
-							50 & 1594 & 0.8390 & 0.9927 & 0.0314 \\
+							50 & 4035 & 3.4621 & 0.9927 & 0.0314 \\
 							\hline
-							60 & 19999 & 1.1572 & 0.9987 & 0.0456 \\
+							60 & 5502 & 5.7737 & 0.9987 & 0.0456 \\
 							\hline
 						\end{tabular}
 					\end{table}
@@ -355,13 +497,13 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
 						\centering
 						\begin{tabular}{|c|c|c|c|c|}
 							\hline 
-							n & Iteraciones & Tiempo & Convergencia & Error \\
+							n & Iteraciones & Tiempo(s) & Convergencia & Error \\
 							\hline
-							25 &603 & 0.0339 & 0.9855 & 0.008 \\
+							25 & 635 & 0.02531 & 0.9855 & 0.008 \\
 							\hline
-							50 & 1594 & 0.0716 & 0.9962 & 0.0314 \\
+							50 & 2097 & 0.0539 & 0.9962 & 0.0314 \\
 							\hline
-							60 & 19999 & 0.1228 & 0.9973 & 0.0456 \\
+							60 & 2867 & 0.0627 & 0.9973 & 0.0456 \\
 							\hline
 						\end{tabular}
 					\end{table}
@@ -372,60 +514,47 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
 						\centering
 						\begin{tabular}{|c|c|c|c|c|}
 							\hline 
-							n & Iteraciones & Tiempo & Convergencia & Error \\
+							n & Iteraciones & Tiempo(s) & Convergencia & Error \\
 							\hline
-							25 & 1065 & 0.0154 & 0.9971 & 0.0290 \\
+							25 & 2654 & 0.0168 & 0.9971 & 0.0290 \\
 							\hline
-							50 & 2021 & 0.1959 & 0.9992 & 0.1210 \\
+							50 & 8418 & 0.0516 & 0.9992 & 0.1210 \\
 							\hline
-							60 & 2372 & 0.0204 & 0.9995 & 0.1824\\
+							60 & 11365 & 0.0707 & 0.9995 & 0.1824\\
 							\hline
 						\end{tabular}
 					\end{table}
-					\item $w=1.2$
+					
+					\item $w=1.6$
 					\begin{table}[H]
 						\centering
 						\begin{tabular}{|c|c|c|c|c|}
 							\hline 
-							n & Iteraciones & Tiempo & Convergencia & Error \\
+							n & Iteraciones & Tiempo(s) & Convergencia & Error \\
 							\hline
-							25 & 683 & 0.0126 & 0.9943 & 0.0152\\
+							25 & 1313 & 0.0065 & 0.9935 & 0.0124 \\
 							\hline
-							50 & 1649 & 0.0251 & 0.9986 & 0.0610 \\
+							50 & 4255 & 0.0247 & 0.9983 & 0.0500 \\
 							\hline
-							60 & 1972 & 0.0196 & 0.9990 & 0.0896  \\
-							\hline
-						\end{tabular}
-					\end{table}
-					\item $w=1.65$
-					\begin{table}[H]
-						\centering
-						\begin{tabular}{|c|c|c|c|c|}
-							\hline 
-							n & Iteraciones & Tiempo & Convergencia & Error \\
-							\hline
-							25 & 594 & 0.0123 & 0.9934 & 0.0126 \\
-							\hline
-							50 & 1481 & 0.0176 & 0.9983 & 0.0500 \\
-							\hline
-							60 & 1802 & 0.0180 & 0.9988 & 0.0732 \\
+							60 & 5784 & 0.0347 & 0.9988 & 0.0732 \\
 							\hline
 						\end{tabular}
 					\end{table}
 					\end{itemize}			
 			\end{itemize}
- 	        Se puede observar que la cantidad de iteraciones y el error de los métodos de Gauss-Seidel y Jacobi tienen los mismos valores, aunque este último toma más tiempo.
- 	        \\
-			Por otra, parte al analizar los resultados del método de Relajación para los diferentes valores de $w$, se puede percatar de que a entre más grande es el valor de $w$, más rápido converge, además de que disminuye el error. \newpage
+ 	        
+ 	        Se observa que la cantidad de iteraciones del método de Jacobi es casi el doble que de Gauss-Seidel, pero la cantidad de tiempo que demora Jacobi es mucho mayor a la de Gauss-Seidel.\\
+ 	        Al analizar los resultados del método de relajación, se puede observar que el tiempo de convergencia es menor al los métodos mencionado anteriormente, se aprecia que para los diferentes valores de $w$, entre mayor sea $w$, mas rápido converge, y la cantidad de iteraciones disminuye.
+			\newpage
  	        \item Si en lugar de usar la forma implementable del método de Gauss-Seidel, se usa la forma general $x^{k+1} = (I-Q^{-I}_{G-S}A)x^k+Q^{-I}_{G-S}b$, cual es la solución del sistema y cual es el tiempo requerido para $n = 25$ y $n = 50$? Compare la solución obtenida en (b) con la que encuentra mediante este proceso.\\
  	        Los resultados encontrados al utilizar la forma general del método de Gauss-Seidel, son:
  	        
  	        n = 25: 
- 	       	$x_{a} = \left(\begin{array}{c} 0.03916\\ 0.0783\\ 0.1174\\ 0.1565\\ 0.1955\\ 0.2345\\ 0.2734\\ 0.3122\\ 0.351\\ 0.3897\\ 0.4283\\ 0.4669\\ 0.5053\\ 0.5437\\ 0.582\\ 0.6203\\ 0.6584\\ 0.6965\\ 0.7346\\ 0.7726\\ 0.8105\\ 0.8485\\ 0.8864\\ 0.9243\\ 0.9621 \end{array}\right) $
+ 	       	$x_{a} = \left(\begin{array}{c} 0.0385\\ 0.0769\\ 0.1154\\ 0.1539\\ 0.1924\\ 0.2308\\ 0.2693\\ 0.3078\\ 0.3462\\ 0.3847\\ 0.4232\\ 0.4616\\ 0.5001\\ 0.5385\\ 0.5770\\ 0.6155\\ 0.6539\\ 0.6924\\ 0.7308\\ 0.7693\\ 0.8077\\ 0.8462\\ 0.8846\\ 0.9231\\ 0.9615 \end{array}\right) $
  	        n = 50:
- 	        $x_{a} = \left(\begin{array}{c} 0.03916\\ 0.0783\\ 0.1174\\ 0.1565\\ 0.1955\\ 0.2345\\ 0.2734\\ 0.3122\\ 0.351\\ 0.3897\\ 0.4283\\ 0.4669\\ 0.5053\\ 0.5437\\ 0.582\\ 0.6203\\ 0.6584\\ 0.6965\\ 0.7346\\ 0.7726\\ 0.8105\\ 0.8485\\ 0.8864\\ 0.9243\\ 0.9621 \end{array}\right)$
+ 	        $x_{a} = \left(\begin{array}{c} 0.0196\\ 0.0393\\ 0.0589\\ 0.0785\\ 0.0981\\ 0.1178\\ 0.1374\\ 0.1570\\ 0.1766\\ 0.1963\\ 0.2159\\ 0.2355\\ 0.2551\\ 0.2747\\ 0.2944\\ 0.3140\\ 0.3336\\ 0.3532\\ 0.3728\\ 0.3924\\ 0.4121\\ 0.4317\\ 0.4513\\ 0.4709\\ 0.4905\\ 0.5101\\ 0.5297\\ 0.5493\\ 0.5689\\ 0.5885\\ 0.6081\\ 0.6277\\ 0.6473\\ 0.6669\\ 0.6865\\ 0.7061\\ 0.7257\\ 0.7453\\ 0.7649\\ 0.7845\\ 0.8041\\ 0.8237\\ 0.8433\\ 0.8629\\ 0.8825\\ 0.9021\\ 0.9216\\ 0.9412\\ 0.9608\\ 0.9804 \end{array}\right)$
  	        
- 	        Con esta información se pueden armar las siguientes tabla comparativas:
+ 	        Con la información entregada se pudo armar las siguientes tablas:
  	        \begin{itemize}
  	        	\item Para n=25: \begin{table}[H]
  	        			\centering
@@ -433,9 +562,9 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
  	        				\hline 
 							 & General & Implementable \\
 							 \hline
-							 Tiempo & 0.0183 & 0.0339 \\
+							 Tiempo & 0.0253 & 0.0282 \\
 							 \hline
-							 Iteraciones & 320 & 603\\
+							 Iteraciones & 635 & 1233\\
 							 \hline
 							 Error & 0.0055 & 0.0080\\
 							\hline
@@ -447,17 +576,15 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
  	        				\hline 
 							 & General & Implementable \\
 							 \hline
-							 Tiempo & 0.0167 & 0.0716 \\
+							 Tiempo & 0.0539 & 0.2211 \\
 							 \hline
-							 Iteraciones & 879 & 1594 \\
+							 Iteraciones & 2097 & 4035 \\
 							 \hline
 							 Error & 0.0220 & 0.0314\\
 							\hline
  	        			\end{tabular}
  	        		\end{table}
- 	        		Con estos datos, se puede concluír que la forma general del método de Gauss-Seidel es mucho más efectiva a la hora de resolver un sistema que su contraparte implementable. Esto debido a que en ambos casos, la forma general presenta un menor tiempo de ejecución, una menor cantidad de iteracionas y un menor error.
- 	        		\\
- 	        		Para responder esta pregunta se utilizaron los archivos GaussSeidel.m, Jacobi2.m, gs-implementable.m y Richardson.m
+ 	        		De las tablas se puede extraer que el metodo de Gauss-Seidel en su forma general, es mas eficas a la hora de resolver un sistema, ya que comparando el tiempo de ejecucion, iteraciones y errores, con el metodo de Gauss implementable ,la forma general de Gauss-Seidel es mucho mas efectiva, ya que presenta un menor valor en todo estos aspectos.
  	        \end{itemize}
  	 \end{enumerate}
  \end{enumerate}
@@ -469,69 +596,34 @@ Los gráficos debiesen ser iguales, pero la gráfica del polinomio $g$ se dispar
     
 \vspace{0.9cm}
 
-Se desea dibujar el contorno del dibujo de Snoopy:
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=10cm]{enun1}
-    \caption{enunciado.} \label{fig:enun1}
-\end{figure}
-
-
-
 
 \item Utilizando la interpolación por Spline cubico, obtenga las dos curvas que aproximan el contorno del  Snoopy.
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=9cm]{interp_spline}
+    \includegraphics[width=9cm]{snoopy.png}
     \caption{interpolación Spline cubica.} \label{fig:interp_spline}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=9cm]{interp_spline_csaps}
-    \caption{interpolación Spline cubica suavizante.} \label{fig:interp_spline_csaps}
-\end{figure}
-\newpage
-La función utilizada es:
- 
-\begin{itemize}
-\item interp
-\end{itemize}
-obs: en esta función se puede cambiar el comando ya sea por spline,csaps u otras, así se ve su comportamiento en cada caso.
-\item Como podría utilizar el polinomio de interpolación de Lagrange para aproximar la parte inferior del contorno del Snoopy? Trace el grafico que obtiene en esta aproximación.
 
-Primero, para plantear el uso del polinomio de interpolación de Lagrange se hará uso de la definición de este polinomio interporlante la cual se planteará a continuación.
+\item Como podría utilizar el polinomio de interpolación de Lagrange para aproximar la parte inferior del contorno del Snoopy? Trace el gráfico que obtiene en esta aproximación.
+
+El polinomio de interpolación de Lagrange se define de la siguiente manera:
 
  \begin{equation}
  p(x)=\sum_{i=0}^n yi*Li(x)
 \end{equation}
-\\ De lo anterior, se define inmediatamente el valor de Li de la siguiente manera:
+\\ Donde Li(x) se define:
  \begin{equation}
- Lk(x)=\prod_{j=0,j\not=k}^{n}
+ Lk(x)=\prod_{j=0,j\not=k}^{n}  \left( \frac{x-x_{i}}{x_{k}-x_{j}} \right)
 \end{equation}
-Luego, despues de definir como se utilizará el polinimio interpolante de Lagrange, se aplica el algoritmo en MATLAB con el fin de obtener graficamente lo que se plantea. 
+Ya definido el polonimio interpolante de Lagrange, se aplica el algoritmo $pol-lag.m$,algoritmo interpolante de Lagrange, en MATLAB con el fin de obtener la gráfica inferior del Snoopy, utilizando las curvas 4,5 y 6 del problema. 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=9cm]{int_lagrange_inf}
-    \caption{interpolación Lagrange parte inferior del Snoopy.} \label{fig:int_lagrange_inf}
+    \includegraphics[width=9cm]{snoopy2.png}
+    \caption{interpolación Lagrange parte inferior del Snoopy.} \label{fig:snoopy2}
 \end{figure}
-Usando la misma interpolación polinómica de Lagrange y bajo el mismo algoritmo se grafica igualmente la parte superior del auto en cuestión.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=9cm]{int_lagrange_aprox_parte_sup}
-    \caption{interpolación lagrange parte superior del Snoopy.} \label{fig:int_lagrange_aprox_parte_sup}
-\end{figure}
-La función utilizada es:
- 
-\begin{itemize}
-\item lagrang(función que realiza el polinimio int)
-\item lagrange(script que pide los datos)
-\end{itemize}
-\newpage
 
 
   
@@ -541,26 +633,11 @@ La función utilizada es:
  \item Use la fórmula del trapecio compuesta (para 6 subintervalos) para calcular la fuerza total ejercida por el agua en la cara de la presa.
  \\ 
  \\
- Usando la fórmula del trapecio compuesto se obtiene que la fuerza total ejercida por el agua en la cara de la presa es la siguiente:
+ Al usar la formula del trapecio compuesto para 6 sub-intervalos se obtiene una fuerza total ejercida por el agua sobre la presa es de:
  \\
  \\
- f=1.0854e+10
- resultó ser la siguiente imagen.
- \begin{figure}[H]
-    \centering
-    \includegraphics[width=9cm]{fuerza_trap}
-    \caption{fuerza o presión en cada tramo calculado.} \label{fig:fuerza_trap}
-\end{figure}
- \begin{figure}[H]
-    \centering
-    \includegraphics[width=9cm]{presionfin}
-    \caption{presión en cota a mayor profundidad.} \label{fig:presionfin}
-\end{figure}
+ f= 2.1658e+09
 
- 
-\begin{itemize}
-\item trapecio
-\end{itemize}
 
  \vspace{0.8cm}
  
@@ -568,7 +645,7 @@ La función utilizada es:
  
   \begin{figure}[H]
     \centering
-    \includegraphics[width=9cm]{curva_derecha_lagrange}
+    \includegraphics[width=9cm]{Lagrange.jpg}
     \caption{Curva lado derecho de la presa, interpolación polinómica de Lagrange.} \label{fig:curva_derecha_lagrange}
   
 \end{figure}
@@ -578,9 +655,11 @@ La función utilizada es:
  \\
  \begin{figure}[H]
     \centering
-    \includegraphics[width=9cm]{curvaizq_spline}
+    \includegraphics[width=9cm]{Spline3.jpg}
     \caption{Curva lado izquierdo de la presa, interpolación por spline cubico.} \label{fig:curvaizq_spline}
 \end{figure}
+    
+
 
  \end{enumerate}
  \end{enumerate}
@@ -590,6 +669,7 @@ La función utilizada es:
     
     
 \chapter{Conclusión}
+Finalizando, podemos concluir que estos algoritmos analizados durante el trabajo, permiten resolver una gran variedad de problemas matemáticos, tales como la resolución de sistemas de ecuaciones lineales, aproximación e integración de funciones, los cuales pudimos ver  en concreto el funcionamiento de cada uno de ellos. La aplicación de los algoritmos estudiados son esenciales para la resolución de problemas que comúnmente no podrían ser resueltos de manera convencional, debido a la complejidad de estos. Finalmente este trabajo permitió comprender de manera práctica y fácil la teoría y aplicación de los algoritmos estudiados
 
 
 
