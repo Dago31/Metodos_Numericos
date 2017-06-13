@@ -1,4 +1,4 @@
-function [xp] = Algoritmo2(x0,n,e,lambda)
+function [xp] = Algoritmo3(x0,n,e,lambda)
 % x0 : vector inicial
 % n : Iteraciones máximas
 % e : Error 
